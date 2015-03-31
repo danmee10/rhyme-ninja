@@ -5,8 +5,10 @@ Rails.application.routes.draw do
 
   get 'sign_out', to: "sessions#destroy"
   get 'sign_in', to: "sessions#new"
-  get 'sign_up', to: "user#new"
+  get 'sign_up', to: "users#new"
 
-  resource :rhyme
-  resource :user
+  resources :users do
+    resources :rhymes
+  end
+  get '/rhymes', to: "rhymes#public_index"
 end

@@ -1,10 +1,7 @@
 module ApplicationHelper
 
   def site_navigation
-    if signed_in?
-      render partial: 'layouts/navigations/authenticated_nav'
-    else
-      render partial: 'layouts/navigations/unauthenticated_nav'
-    end
+    session_type = signed_in? ? 'authenticated' : 'unauthenticated'
+    render partial: "layouts/navigations/base_nav", locals: {session_type: session_type}
   end
 end
