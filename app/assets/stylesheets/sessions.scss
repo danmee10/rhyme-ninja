@@ -1,3 +1,58 @@
 // Place all the styles related to the sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.error_messages {
+  h2 {
+    font-size: 20px;
+  }
+}
+
+.form-copy {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.sign-in-option {
+  margin-left: 20%;
+  margin-bottom: 20px;
+  p {
+    display: inline;
+    margin-left: 10px;
+  }
+  img.provider-icon {
+    width: 40px;
+  }
+}
+
+form.password-sign-up-form {
+  margin-left: 40%;
+  .field {
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 20px;
+    }
+  }
+  .register-button {
+    margin-top: 20px;
+  }
+}
+
+.faq {
+  text-align: center;
+  margin-top: 80px;
+  .q-and-a {
+    display: none;
+    width: 50%;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 25px;
+    .question {
+      font-weight: bold;
+    }
+    .answer {
+      margin-left: 20px;
+    }
+  }
+}

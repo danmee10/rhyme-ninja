@@ -6,8 +6,8 @@ class Authorization < ActiveRecord::Base
   PROVIDERS = {
     'twitter' => {"auth_url" => "/auth/twitter"},
     'google_oauth2' => {"auth_url" => "/auth/google_oauth2"},
-    'facebook' => {"auth_url" => "/auth"},
-    'instagram' => {"auth_url" => "/auth"}
+    'facebook' => {"auth_url" => "/auth/facebook"},
+    'instagram' => {"auth_url" => "/auth/instagram"}
   }
 
   def self.find_from_hash(hash)

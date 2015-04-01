@@ -1,13 +1,99 @@
 <div class="container">
   <div class="row">
-    <div class="page-header">
+    <div class="page-header text-center">
       <h1>Create Account</h1>
+    </div>
+    <div class="form-copy">
+      <p>Create an account to save your work, and gain access to all RhymeNinja's features!</p>
+      <p>If you don't use any of the services on the right, you can create an account with an email and password.</p>
+      <p>You can always add these services later if you wish.</p>
     </div>
     <div class="col-md-6">
       <%= render partial: "shared/forms/password_sign_up" %>
     </div>
     <div class="col-md-6">
-      <%= link_to "sign in with twitter", '/auth/twitter' %>
+      <div class="sign-in-option">
+        <%= link_to '/auth/instagram' do %>
+          <%= image_tag('instagram_icon.png', class: 'provider-icon') %>
+          <p>Create account with Instagram</p>
+        <% end %>
+      </div>
+      <div class="sign-in-option">
+        <%= link_to '/auth/facebook' do %>
+          <%= image_tag('facebook_icon.png', class: 'provider-icon') %>
+          <p>Create account with Facebook</p>
+        <% end %>
+      </div>
+      <div class="sign-in-option">
+        <%= link_to '/auth/twitter' do %>
+          <%= image_tag('twitter_icon.png', class: 'provider-icon') %>
+          <p>Create account with Twitter</p>
+        <% end %>
+      </div>
+      <div class="sign-in-option">
+        <%= link_to '/auth/google_oauth2' do %>
+          <%= image_tag('google_icon.png', class: 'provider-icon') %>
+          <p>Create account with Google</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="faq">
+      <div class="reveal-button btn btn-info">
+        Frequently Asked Questions
+      </div>
+
+      <div class="q-and-a">
+        <div class="question">
+          <p>
+            Do I need an account?
+          </p>
+        </div>
+        <div class="answer">
+          <p>
+            No.  You are free to browse all public Rhymes, and create your own Rhymes without a RhymeNinja Account.
+          </p>
+        </div>
+        <div class="question">
+          <p>
+            What is the point of making an account?
+          </p>
+        </div>
+        <div class="answer">
+          <p>
+            With an account, you can save Rhymes, make comments on public Rhymes, and depending on your enabled external services, have access to other features.
+          </p>
+        </div>
+        <div class="question">
+          <p>
+            What are the advantages of signing up with an external service?
+          </p>
+        </div>
+        <div class="answer">
+          <p>
+            Besides not having to remember an additional email and password for RhymeNinja, each external service has special RhymeNinja features that are enabled upon activation.  See <%= link_to "service features", "#" %> for a full list.
+          </p>
+        </div>
+        <div class="question">
+          <p>
+            Can I use more than one external service account with RhymeNinja?
+          </p>
+        </div>
+        <div class="answer">
+          <p>
+            Yes.  After your initial account activation, whether through a service or through email and password, you can connect any or all external services through Account -> Settings.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+  $(function(){
+    $('.reveal-button').click(function(){
+      $('.q-and-a').toggle();
+    });
+  });
+</script>

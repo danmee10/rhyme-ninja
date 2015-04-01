@@ -1,0 +1,27 @@
+.rhyme-ninja-nav {
+  li.nav-provider-sign-in {
+    padding: 5px 10px;
+    img {
+      display: inline;
+      width: 25px;
+    }
+    a {
+      display: inline;
+      padding-left: 5px;
+    }
+  }
+}
+li.password-sign-in {
+  text-align: center;
+  form.password-sign-in-form {
+    display: none;
+    .field {
+      margin-top: 3px;
+    }
+    .nav-pw-login {
+      margin-top: 3px;
+      height: 30px;
+      padding: 0px 21px;
+    }
+ }
+}

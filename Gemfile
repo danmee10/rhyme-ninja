@@ -21,6 +21,8 @@ gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-identity'
 gem "omniauth-google-oauth2"
+gem 'omniauth-instagram'
+gem 'omniauth-facebook'
 
 # misc
 gem 'awesome_print'
