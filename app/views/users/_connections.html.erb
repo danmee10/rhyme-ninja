@@ -1,0 +1,19 @@
+<div class="connections-manager">
+  <div class="col-md-6">
+    <h3>Existing Connections</h3>
+    <ul>
+      <% current_user.authorizations.each do |auth| %>
+      <li><%= auth.provider %></li>
+      <% end %>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <h3>Available</h3>
+    <ul>
+      <% current_user.unauthorized_provider_names.each do |auth| %>
+      <li><%= link_to auth, Authorization::PROVIDERS[auth]['auth_url'] %></li>
+      <% end %>
+    </ul>
+  </div>
+
+</div>

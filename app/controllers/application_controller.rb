@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
     @current_user = user
     session[:user_id] = user.id
   end
+
+  def authenticate_user
+    if current_user.blank? || current_user.id.to_s != params[:id]
+      flash[:error] = "You are not authorized to view that page."
+      redirect_to :root
+    end
+  end
 end

@@ -13,5 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
+//= require angular
+//= require angular-animate
+//= require angular-resource
 //= require turbolinks
+//= require ./angular_ninja/app
+//= require_tree ./angular_ninja/controllers
 //= require_tree .

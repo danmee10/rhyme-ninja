@@ -13,12 +13,14 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # assets
 gem "twitter-bootstrap-rails"
+gem 'angularjs-rails'
 
 # Oauth
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-identity'
+gem "omniauth-google-oauth2"
 
 # misc
 gem 'awesome_print'
