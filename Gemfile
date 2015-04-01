@@ -18,6 +18,10 @@ gem "twitter-bootstrap-rails"
 gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-twitter'
+gem 'omniauth-identity'
+
+# misc
+gem 'awesome_print'
 
 
 

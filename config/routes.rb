@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
   root to: "rhymes#new"
 
-  get '/auth/:provider/callback', :to => 'sessions#create'
+  match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
 
   get 'sign_out', to: "sessions#destroy"
-  get 'sign_in', to: "sessions#new"
-  get 'sign_up', to: "users#new"
+  get 'create_account', to: "sessions#new"
 
   resources :users do
     resources :rhymes
