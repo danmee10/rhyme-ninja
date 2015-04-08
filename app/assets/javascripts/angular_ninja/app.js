@@ -1,3 +1,5 @@
 var app = angular.module("rhymeNinja", [
-    'ngResource'
+    'ngResource',
+    'ui.router',
+    'templates'
 ]);
