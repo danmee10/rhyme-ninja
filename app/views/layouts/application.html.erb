@@ -2,16 +2,17 @@
 <html>
 <head>
   <title>RhymeNinja</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= favicon_link_tag 'ninja_icon.png' %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= body_id %>" ng-app="rhymeNinja">
 
-<%= site_navigation %>
-<%= bootstrap_flash %>
-<ui-view></ui-view>
-<%#= yield %>
+  <%= site_navigation %>
+  <%= bootstrap_flash %>
+  <%= yield %>
+  <%= javascript_include_tag 'application' %>
+  <%= yield :javascript %>
 
 </body>
 </html>

@@ -19,9 +19,8 @@
     </li>
     <li class="divider"></li>
     <li class="password-sign-in">
-      <p class="toggle-pw-signin-form">
+      <%= image_tag('ninja_icon.png', class: 'sign-in-ninja-icon') %>
         Email
-      </p>
       <%= render partial: "shared/forms/password_sign_in" %>
     </li>
   </ul>
@@ -30,12 +29,15 @@
   <%= link_to "Create Account", create_account_path %>
 </li>
 
-<script type="text/javascript">
-  $(function(){
-    $('p.toggle-pw-signin-form').click(function(e){
-      e.stopPropagation();
-      $('form.password-sign-in-form').toggle();
-      $(this).toggle();
+
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function(){
+      $('li.password-sign-in').click(function(e){
+        e.stopPropagation();
+        $('form.password-sign-in-form').toggle();
+        $(this).toggle();
+      });
     });
-  });
-</script>
+  </script>
+<% end %>

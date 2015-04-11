@@ -10,18 +10,30 @@
       padding-left: 5px;
     }
   }
-}
-li.password-sign-in {
-  text-align: center;
-  form.password-sign-in-form {
-    display: none;
-    .field {
-      margin-top: 3px;
+  li.password-sign-in {
+    &:hover {
+
     }
-    .nav-pw-login {
-      margin-top: 3px;
-      height: 30px;
-      padding: 0px 21px;
+    padding: 5px 10px;
+    img.sign-in-ninja-icon {
+      display: inline;
+      width: 25px;
+      margin-right: 5px;
     }
- }
+    img.sign-in-ninja-icon {
+      display: inline;
+      width: 25px;
+    }
+    form.password-sign-in-form {
+      display: none;
+      .field {
+        margin-top: 3px;
+      }
+      .nav-pw-login {
+        margin-top: 3px;
+        height: 30px;
+        padding: 0px 21px;
+      }
+    }
+  }
 }

@@ -1,0 +1,26 @@
+app.controller('NinjaCtrl', ['$scope', 'Rhyme', function ($scope, Rhyme){
+  'use strict'
+
+  // id & token from page @
+  var setSessionVars = function() {
+    if (typeof id === 'undefined' || typeof token === 'undefined') {
+      return;
+    }
+    $scope.current_user_id = id;
+    $scope.authenticity_token = token;
+  };
+  setSessionVars();
+
+  $scope.rhyme = "";
+
+  $scope.initNinja = function() {
+    var val = $('textarea.rhyme-box').val();
+    Rhyme.save({user_id: $scope.current_user_id, original_text: val, authenticity_token: $scope.authenticity_token})
+  };
+
+
+
+
+
+
+}]);

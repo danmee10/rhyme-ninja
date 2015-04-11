@@ -17,9 +17,8 @@
 //= require angular-animate
 //= require angular-resource
 //= require angular-rails-templates
-//= require turbolinks
 //= require angular-ui-router
 //= require ./angular_ninja/app
-//= require_tree ./angular_ninja/controllers
-//= require_tree ./angular_ninja/templates
+//= require_tree ./angular_ninja/ninja
+//= require_tree ./angular_ninja/user
 //= require_tree .

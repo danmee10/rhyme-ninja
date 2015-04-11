@@ -4,12 +4,11 @@ app.config([
   function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-      .state('home', {
+      .state('ninja', {
         url: '/',
-        templateUrl: '/home.html',
-        controller: 'HomeCtrl'
+        templateUrl: '/ninja/_new.html',
+        controller: 'NinjaCtrl'
       });
 
-    $urlRouterProvider.otherwise('/home');
   }
 ]);

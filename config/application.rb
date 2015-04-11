@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module RhymeNinja
   class Application < Rails::Application
+    # Use the responders controller from the responders gem
+    config.app_generators.scaffold_controller :responders_controller
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -23,6 +26,6 @@ module RhymeNinja
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
-    config.angular_templates.ignore_prefix = 'angular_ninja/templates'
+    config.angular_templates.ignore_prefix = 'angular_ninja'
   end
 end

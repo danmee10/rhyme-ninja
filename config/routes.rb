@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "rhymes#new"
+  root to: "angular#front_end"
 
   match '/auth/:provider/callback', :to => 'sessions#create', via: [:get, :post]
 
