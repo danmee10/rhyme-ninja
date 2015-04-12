@@ -15,5 +15,6 @@ app.config([
         controller: 'theNinjaCtrl'
       });
 
+      $urlRouterProvider.when('', '/');
   }
 ]);
