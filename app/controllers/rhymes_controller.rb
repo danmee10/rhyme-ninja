@@ -8,8 +8,15 @@ class RhymesController < ApplicationController
 
   def create
     @rhyme = Rhyme.create!({ user_id: params[:user_id],
-                       original_text: params[:original_text]})
-    render nothing: true, status: 200
+                       original_text: params[:original_text],
+                         rhymed_text: params[:original_text]})
+    render json: @rhyme
+  end
+
+  def update
+    @rhyme = Rhyme.find(params[:rhyme][:id])
+    @rhyme.update!(rhymed_text: params[:rhyme][:rhymed_text])
+    render json: @rhyme
   end
 
   def index

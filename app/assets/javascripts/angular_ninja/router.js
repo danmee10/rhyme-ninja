@@ -4,10 +4,15 @@ app.config([
   function($stateProvider, $urlRouterProvider) {
 
     $stateProvider
-      .state('ninja', {
+      .state('initNinja', {
         url: '/',
-        templateUrl: '/ninja/_new.html',
-        controller: 'NinjaCtrl'
+        templateUrl: '/ninja/_init.html',
+        controller: 'initNinjaCtrl'
+      })
+      .state('theNinja', {
+        url: '/ninja',
+        templateUrl: '/ninja/_ninja.html',
+        controller: 'theNinjaCtrl'
       });
 
   }

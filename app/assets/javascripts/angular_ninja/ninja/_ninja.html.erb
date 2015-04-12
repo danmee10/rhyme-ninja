@@ -1,0 +1,24 @@
+<div class="container" id="the-ninja">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="original-text">
+        {{ rhyme.original_text }}
+      </div>
+    </div>
+
+    <div class="col-md-6">
+      <div class="rhymed-text">
+
+
+        <form ng-submit="alterText()">
+          <textarea class="rhyme-box" ng-model="rhyme.rhymed_text"></textarea>
+          <br>
+          <button type="submit" class="btn ninja-button">Save</button>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</div>

@@ -1,5 +1,7 @@
-app.factory('Rhyme', ['$resource', function ($resource) {
-  'use strict';
-
-  return $resource('/users/:user_id/rhymes/:id.json', { id: '@id', user_id: '@user_id' });
-}]);
+app.factory('rhyme', [function(){
+  var r = {
+    original_text: '',
+    rhymed_text: ''
+  };
+  return r;
+}])

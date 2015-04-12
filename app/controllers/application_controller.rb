@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_user
-    param_id = params[:id] || params['user_id']
+    param_id = params['user_id'] || params[:id]
     if current_user.id.to_s != param_id
       respond_to do |format|
         format.html {
