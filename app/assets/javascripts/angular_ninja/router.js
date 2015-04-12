@@ -10,11 +10,11 @@ app.config([
         controller: 'initNinjaCtrl'
       })
       .state('theNinja', {
-        url: '/ninja',
+        url: '/ninja/:rhyme_id',
         templateUrl: '/ninja/_ninja.html',
         controller: 'theNinjaCtrl'
       });
 
-      $urlRouterProvider.when('', '/');
+    $urlRouterProvider.when('', '/');
   }
 ]);

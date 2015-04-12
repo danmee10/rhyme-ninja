@@ -6,6 +6,10 @@ class RhymesController < ApplicationController
     @rhyme = Rhyme.new
   end
 
+  def show
+    @rhyme = Rhyme.find(params[:id])
+  end
+
   def create
     @rhyme = Rhyme.create!({ user_id: params[:user_id],
                        original_text: params[:original_text],
@@ -15,7 +19,7 @@ class RhymesController < ApplicationController
 
   def update
     @rhyme = Rhyme.find(params[:rhyme][:id])
-    @rhyme.update!(rhymed_text: params[:rhyme][:rhymed_text])
+    @rhyme.update!(rhymed_text: params[:rhymed_text])
     render json: @rhyme
   end
 
