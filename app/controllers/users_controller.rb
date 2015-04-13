@@ -8,6 +8,6 @@ class UsersController < ApplicationController
   end
 
   def rhymes
-    @rhymes = User.find(params[:user_id]).rhymes.to_a
+    @rhymes = User.find(params[:user_id]).rhymes
   end
 end
