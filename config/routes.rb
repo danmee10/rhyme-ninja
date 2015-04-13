@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'create_account', to: "sessions#new"
 
   resources :users do
-    resources :rhymes
+    resources :rhymes, except: [:index, :edit]
+    get '/rhymes', to: "users#rhymes"
   end
-  get '/rhymes', to: "rhymes#public_index"
 end
