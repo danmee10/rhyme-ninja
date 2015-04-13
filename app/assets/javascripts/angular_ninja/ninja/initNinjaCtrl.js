@@ -15,9 +15,10 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', functi
 
   $scope.initNinja = function() {
     var val = $('textarea.init-rhyme-box').val();
+    var title = $('input.title-box').val();
     var user_id = $scope.session.user_id
     var authenticity_token = $scope.session.authenticity_token
-    Rhyme.save({user_id: user_id, original_text: val, authenticity_token: authenticity_token}, function(r){
+    Rhyme.save({user_id: user_id, title: title, original_text: val, authenticity_token: authenticity_token}, function(r){
         $.extend(rhyme, r)
         $location.path('/ninja/' + r.id);
     });

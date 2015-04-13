@@ -3,6 +3,14 @@
     text-align: center;
     margin: 50px auto;
     width: 445px;
+    input.title-box {
+      width: 300px;
+      margin-bottom: 20px;
+      border-radius: 5px;
+      border: 1px solid black;
+      padding: 2px 8px;
+      font-size: 18px;
+    }
     textarea.init-rhyme-box {
       height: 400px;
       width: 300px;

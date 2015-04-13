@@ -11,9 +11,11 @@ class RhymesController < ApplicationController
   end
 
   def create
+    title = params[:title].empty? ? 'Untitled' : params[:title]
     @rhyme = Rhyme.create!({ user_id: params[:user_id],
                        original_text: params[:original_text],
-                         rhymed_text: params[:original_text]})
+                         rhymed_text: params[:original_text],
+                               title: title})
     render json: @rhyme
   end
 
