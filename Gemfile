@@ -11,7 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # assets
-gem "twitter-bootstrap-rails"
+gem 'twitter-bootstrap-rails'
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 source 'https://rails-assets.org' do
@@ -23,13 +23,13 @@ gem 'figaro'
 gem 'omniauth'
 gem 'omniauth-twitter'
 gem 'omniauth-identity'
-gem "omniauth-google-oauth2"
+gem 'omniauth-google-oauth2'
 gem 'omniauth-instagram'
 gem 'omniauth-facebook'
 
 # misc
 gem 'awesome_print'
-gem "responders"
+gem 'responders'
 
 
 
