@@ -2,6 +2,8 @@
 
 <ul>
   <li ng-repeat="rhyme in rhymes">
-    {{rhyme.title}}
+    <a ng-href="/#/ninja/{{rhyme.id}}">
+      {{rhyme.title}}
+    </a>
   </li>
 </ul>
