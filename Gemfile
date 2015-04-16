@@ -16,6 +16,7 @@ gem 'angularjs-rails'
 gem 'angular-rails-templates'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router'
+  gem 'rails-assets-lodash'
 end
 
 # Oauth
