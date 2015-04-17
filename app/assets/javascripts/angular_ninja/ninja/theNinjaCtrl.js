@@ -31,6 +31,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     var alteredRhyme = $scope.rhyme;
     Rhyme.update({ user_id: alteredRhyme.user_id,
                         id: alteredRhyme.id,
+                     title: alteredRhyme.title,
                rhymed_text: alteredRhyme.rhymed_text,
         authenticity_token: token
     });

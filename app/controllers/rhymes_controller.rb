@@ -22,7 +22,8 @@ class RhymesController < ApplicationController
   def update
     @rhyme = Rhyme.where(id: params[:rhyme][:id], user_id: params[:user_id]).first
     if !@rhyme.blank?
-      @rhyme.update!(rhymed_text: params[:rhymed_text])
+      @rhyme.update!(rhymed_text: params[:rhymed_text],
+                           title: params[:title])
       render json: @rhyme
     else
       render nothing: true
