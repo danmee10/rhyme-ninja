@@ -15,7 +15,7 @@ app.config([
         controller: 'theNinjaCtrl'
       })
       .state('userRhymes', {
-        url: '/users/:user_id/rhymes',
+        url: '/my-rhymes',
         templateUrl: '/user/_rhymes.html',
         controller: 'userRhymesCtrl'
       });

@@ -2,7 +2,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Account <span class="caret"></span></a>
   <ul class="dropdown-menu" role="menu">
     <li><%= link_to 'Settings', user_path(current_user) %></li>
-    <li><%= link_to "My Rhymes", "/#/users/#{current_user.id}/rhymes" %></li>
+    <li><%= link_to "My Rhymes", "/#/my-rhymes" %></li>
     <li class="divider"></li>
     <li><%= link_to "Sign Out", sign_out_path %></li>
   </ul>
