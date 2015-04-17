@@ -21,7 +21,6 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', 'angul
     });
   }
 
-  // id & token from page @
   var setSessionVars = function() {
     if (typeof id === 'undefined' || typeof token === 'undefined') {
       return;
