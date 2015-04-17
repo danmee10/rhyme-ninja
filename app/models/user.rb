@@ -8,7 +8,11 @@ class User < ActiveRecord::Base
   }
 
   def self.create_from_hash!(hash)
-    create(:name => hash['info']['name'])
+    create(name: hash['info']['name'])
+  end
+
+  def self.convert_to_standard(anon, name)
+    anon.update!(group: 'standard', name: name)
   end
 
   def unauthorized_provider_names

@@ -2,6 +2,31 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   'use strict'
 
 
+  var redirectToCreateAccount = function() {
+    window.location.pathname = "/create_account";
+  };
+
+  var alterText = function() {
+    var alteredRhyme = $scope.rhyme;
+    Rhyme.update({ user_id: alteredRhyme.user_id,
+                        id: alteredRhyme.id,
+                     title: alteredRhyme.title,
+               rhymed_text: alteredRhyme.rhymed_text,
+        authenticity_token: token
+    });
+  };
+
+  if (userType === 'anon') {
+    $scope.rhymeFields = {
+      submitText: "Create free account to save work",
+      submitMethod: redirectToCreateAccount
+    }
+  } else {
+    $scope.rhymeFields = {
+      submitText: "Save",
+      submitMethod: alterText
+    }
+  }
   var rhymeById = function(id) {
     return _.find($scope.rhymes, function(r) {
       return r.id == id;
@@ -27,15 +52,6 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     $scope.rhyme = rhyme;
   }
 
-  $scope.alterText = function() {
-    var alteredRhyme = $scope.rhyme;
-    Rhyme.update({ user_id: alteredRhyme.user_id,
-                        id: alteredRhyme.id,
-                     title: alteredRhyme.title,
-               rhymed_text: alteredRhyme.rhymed_text,
-        authenticity_token: token
-    });
-  };
 
 
 
