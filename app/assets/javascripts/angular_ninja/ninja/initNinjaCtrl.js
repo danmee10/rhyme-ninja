@@ -1,5 +1,25 @@
-app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', function ($scope, Rhyme, $location, rhyme){
+app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', 'angularFlash', function ($scope, Rhyme, $location, rhyme, angularFlash){
   'use strict'
+
+  var maxlengthAnonRhyme = 300;
+
+  if (userType === 'anon') {
+    $("textarea.init-rhyme-box").attr("maxlength", maxlengthAnonRhyme);
+    $("textarea.init-rhyme-box").keypress(function() {
+        if ($(this).val().length >= maxlengthAnonRhyme)  {
+          angularFlash.alertDanger('Login or create a free account to write longer Rhymes.');
+        }
+    });
+    $("textarea.init-rhyme-box").unbind('paste')
+    $("textarea.init-rhyme-box").bind('paste', function() {
+      var self = $(this);
+      setTimeout(function(){
+        if (self.val().length === maxlengthAnonRhyme) {
+          angularFlash.alertDanger('Login or create a free account to write longer Rhymes.');
+        }
+      }, 0);
+    });
+  }
 
   // id & token from page @
   var setSessionVars = function() {
