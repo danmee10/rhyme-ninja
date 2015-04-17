@@ -20,9 +20,13 @@ class RhymesController < ApplicationController
   end
 
   def update
-    @rhyme = Rhyme.find(params[:rhyme][:id])
-    @rhyme.update!(rhymed_text: params[:rhymed_text])
-    render json: @rhyme
+    @rhyme = Rhyme.where(id: params[:rhyme][:id], user_id: params[:user_id]).first
+    if !@rhyme.blank?
+      @rhyme.update!(rhymed_text: params[:rhymed_text])
+      render json: @rhyme
+    else
+      render nothing: true
+    end
   end
 
   def index
