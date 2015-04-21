@@ -1,5 +1,5 @@
 app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash){
-  'use strict'
+  'use strict';
 
 
   var redirectToCreateAccount = function() {
