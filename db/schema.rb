@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150410224403) do
+ActiveRecord::Schema.define(version: 20150422212210) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -33,10 +33,10 @@ ActiveRecord::Schema.define(version: 20150410224403) do
     t.string   "title"
     t.text     "original_text"
     t.text     "rhymed_text"
-    t.string   "type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "user_id"
+    t.integer  "visibility",    default: 0
   end
 
   add_index "rhymes", ["user_id"], name: "index_rhymes_on_user_id"
