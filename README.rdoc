@@ -1,1 +1,1 @@
-This app is currently my professional portfolio as a full-stack Ruby on Rails and Javascript developer.  The wiki for this project has more in-depth explanations of decisions made and steps taken.
+This app is currently my professional portfolio as a full-stack Ruby on Rails and Javascript developer.  The wiki for this project has more in-depth explanations of decisions made and steps taken.  At this time Users can create "Rhymes" either anonymously or create an account to save them.  More features will be added over time.
