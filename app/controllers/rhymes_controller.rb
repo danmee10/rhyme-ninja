@@ -1,6 +1,6 @@
 class RhymesController < ApplicationController
   respond_to :json
-  before_action :authenticate_user
+  before_action :authenticate_user, except: :index
 
   def new
     @rhyme = Rhyme.new

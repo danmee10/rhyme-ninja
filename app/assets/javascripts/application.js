@@ -22,4 +22,6 @@
 //= require ./angular_ninja/app
 //= require_tree ./angular_ninja/ninja
 //= require_tree ./angular_ninja/user
+//= require_tree ./angular_ninja/public_search
+//= require_tree ./angular_ninja/rhymes
 //= require_tree .
