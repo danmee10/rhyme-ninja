@@ -52,7 +52,4 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     $scope.rhyme = rhyme;
   }
 
-
-
-
 }]);
