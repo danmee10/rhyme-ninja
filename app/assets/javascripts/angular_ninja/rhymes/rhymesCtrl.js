@@ -8,7 +8,6 @@ app.controller('rhymesCtrl', ['$scope', '$stateParams', '$http', function ($scop
     filterRhymes();
   });
 
-  console.log("$stateParams --> ", $stateParams)
   var filterRhymes = function() {
     if (typeof $stateParams.titleQuery !== 'undefined' || $stateParams.titleQuery === '') {
       $scope.filteredRhymes = _.filter($scope.allRhymes, function(r){
