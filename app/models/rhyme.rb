@@ -6,4 +6,5 @@ class Rhyme < ActiveRecord::Base
     private_rhyme: 1
   }
 
+  scope :public_rhymes, -> { where(visibility: 0) }
 end

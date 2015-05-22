@@ -90,10 +90,12 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  $(function(){
-    $('.reveal-button').click(function(){
-      $('.q-and-a').toggle();
+<% content_for :javascript do %>
+  <script type="text/javascript">
+    $(function(){
+      $('.reveal-button').click(function(){
+        $('.q-and-a').toggle();
+      });
     });
-  });
-</script>
+  </script>
+<% end %>
