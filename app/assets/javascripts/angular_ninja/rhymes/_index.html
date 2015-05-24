@@ -1,5 +1,9 @@
 <h1>Public Rhymes</h1>
 
 <div id="rhyme-index">
-  <div ng-repeat="rhyme in filteredRhymes">{{rhyme.title}}</div>
+  <div  ng-repeat="rhyme in filteredRhymes">
+    <a ng-href="#/public-rhyme-show/{{rhyme.id}}">
+      {{rhyme.title}}
+    </a>
+  </div>
 </div>
