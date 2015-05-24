@@ -34,7 +34,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   };
 
   var fetchRhymes = function() {
-    User.rhymes({user_id: id}, function(data) {
+    User.rhymes({user_id: userId}, function(data) {
       $scope.rhymes = data.rhymes;
       $scope.rhyme = rhymeById($stateParams.rhyme_id);
       if (typeof $scope.rhyme !== 'undefined') {

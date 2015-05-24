@@ -1,9 +1,24 @@
-<h1>My Rhymes</h1>
+<div id="my-rhymes">
+  <h1 class="text-center page-title">My Rhymes</h1>
 
-<ul>
-  <li ng-repeat="rhyme in rhymes">
-    <a ng-href="/#/ninja/{{rhyme.id}}" ng-click="setRhyme(rhyme.id)">
-      {{rhyme.title}}
-    </a>
-  </li>
-</ul>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th class="text-right options">Options</th>
+      </tr>
+    </thead>
+    <tr ng-repeat="rhyme in rhymes">
+      <td>{{rhyme.title}}</td>
+      <td class="text-right">
+        <a ng-href="/#/ninja/{{rhyme.id}}" ng-click="setRhyme(rhyme.id)">
+          <span class="glyphicon glyphicon-wrench"></span>
+        </a>
+        <a ng-href="/#/public-rhyme-show/{{rhyme.id}}" class="center-spacing">
+          <span class="glyphicon glyphicon-eye-open"></span>
+        </a>
+        <span class="glyphicon glyphicon-remove" ng-click="deleteRhyme(rhyme.id)"></span>
+      </td>
+    </tr>
+  </table>
+</div>

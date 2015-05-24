@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   get 'sign_out', to: "sessions#destroy"
   get 'create_account', to: "sessions#new"
 
-  get 'public_rhymes', to: "rhymes#index"
+  get 'public_rhymes', to: "rhymes#public_index"
+  get 'public_rhyme_show/:id', to: "rhymes#public_show"
   resources :users do
     resources :rhymes, except: [:index, :edit]
     get '/rhymes', to: "users#rhymes"

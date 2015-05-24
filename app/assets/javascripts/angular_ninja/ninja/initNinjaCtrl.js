@@ -2,11 +2,11 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', functi
   'use strict';
 
   var setSessionVars = function() {
-    if (typeof id === 'undefined' || typeof token === 'undefined') {
+    if (typeof userId === 'undefined' || typeof token === 'undefined') {
       return;
     }
     $scope.session = {
-      user_id: id,
+      user_id: userId,
       authenticity_token: token
     }
   };
