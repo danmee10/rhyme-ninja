@@ -1,0 +1,22 @@
+#my-rhymes {
+  h1.page-title {
+    margin-bottom: 40px;
+  }
+  table {
+    width: 600px;
+    margin: 0 auto;
+    th.options {
+      padding-right: 15px;
+    }
+    a.center-spacing {
+      margin-left: 5px;
+      margin-right: 5px;
+    }
+    span.glyphicon-wrench {
+      color: green;
+    }
+    span.glyphicon-remove {
+      color: red;
+    }
+  }
+}

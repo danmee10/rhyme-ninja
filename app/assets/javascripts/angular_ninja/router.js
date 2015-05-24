@@ -23,6 +23,11 @@ app.config([
         url: '/public-rhymes?titleQuery',
         templateUrl: '/rhymes/_index.html',
         controller: 'rhymesCtrl'
+      })
+      .state('publicRhymeShow', {
+        url: '/public-rhyme-show/:rhyme_id',
+        templateUrl: '/rhymes/_show.html',
+        controller: 'rhymeShowCtrl'
       });
 
     $urlRouterProvider.when('', '/');
