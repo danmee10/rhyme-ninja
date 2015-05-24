@@ -1,6 +1,6 @@
 class RhymesController < ApplicationController
   respond_to :json
-  before_action :authenticate_user, except: :index
+  before_action :authenticate_user, except: [:public_index, :public_show]
 
   def new
     @rhyme = Rhyme.new
@@ -30,7 +30,28 @@ class RhymesController < ApplicationController
     end
   end
 
-  def index
+  def destroy
+    rhyme = Rhyme.find(params[:id])
+    if rhyme.present?
+      rhyme.destroy!
+      render json: nil, status: :ok
+    else
+      render json: nil, status: :error
+    end
+  end
+
+  def public_index
     @rhymes = Rhyme.public_rhymes
+    render 'rhymes/index.json'
+  end
+
+  def public_show
+    @rhyme = Rhyme.public_rhymes.find(params[:id])
+    if @rhyme.present?
+      render 'rhymes/show.json'
+    else
+      flash[:error] = "No public Rhyme found."
+      redirect to: :root
+    end
   end
 end

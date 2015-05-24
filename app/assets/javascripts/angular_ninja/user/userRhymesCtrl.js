@@ -1,4 +1,4 @@
-app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', function ($scope, User, rhyme, angularFlash){
+app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', 'Rhyme', function ($scope, User, rhyme, angularFlash, Rhyme){
   'use strict'
 
   if (userType === 'anon') {
@@ -6,7 +6,7 @@ app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', fun
     angularFlash.alertDanger('Create account to view your saved rhymes!');
   }
 
-  User.rhymes({user_id: id}, function(data) {
+  User.rhymes({user_id: userId}, function(data) {
     $scope.rhymes = data.rhymes;
   });
 
@@ -15,6 +15,18 @@ app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', fun
       return r.id === id;
     });
     $.extend(rhyme, selection)
+  };
+
+  $scope.deleteRhyme = function(rhymeId) {
+    if (confirm("Clicking OK will permanently delete your Rhyme. Are you sure?")) {
+      console.log("sanmee")
+      Rhyme.delete({user_id: userId, id: rhymeId, authenticity_token: token}, function(response){
+        angularFlash.alertSuccess('Rhyme successfully deleted!');
+        $scope.rhymes = _.reject($scope.rhymes, function(r){
+          return r.id === rhymeId;
+        });
+      });
+    }
   };
 
 
