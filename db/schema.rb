@@ -11,15 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422212210) do
+ActiveRecord::Schema.define(version: 20150525230419) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "identity_id"
   end
+
+  add_index "authorizations", ["identity_id"], name: "index_authorizations_on_identity_id"
 
   create_table "identities", force: :cascade do |t|
     t.string   "name"

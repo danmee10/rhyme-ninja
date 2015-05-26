@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :authorizations
+  has_many :authorizations, dependent: :destroy
   has_many :rhymes, dependent: :destroy
 
   enum group: {
@@ -11,8 +11,14 @@ class User < ActiveRecord::Base
     create(name: hash['info']['name'])
   end
 
-  def self.convert_to_standard(anon, name)
-    anon.update!(group: 'standard', name: name)
+  def self.find_convert_or_create(hash, user)
+    return create_from_hash!(hash) if user.nil?
+    if user.standard?
+      user
+    else
+      user.update!(group: 'standard')
+      user
+    end
   end
 
   def unauthorized_provider_names

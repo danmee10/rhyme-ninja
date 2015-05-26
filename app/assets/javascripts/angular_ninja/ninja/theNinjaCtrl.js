@@ -27,6 +27,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
       submitMethod: alterText
     }
   }
+
   var rhymeById = function(id) {
     return _.find($scope.rhymes, function(r) {
       return r.id == id;
