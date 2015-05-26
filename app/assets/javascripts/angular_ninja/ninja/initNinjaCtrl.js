@@ -40,4 +40,10 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$cook
   };
 
 
+  if ($scope.session.user_id === '') {
+    $('#init-title').attr("maxlength", '50')
+    $('#init-text').attr("maxlength", '700')
+  }
+
+
 }]);
