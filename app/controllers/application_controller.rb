@@ -34,10 +34,4 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  protected
-
-  def create_anon_if_no_current
-    self.current_user ||= User.create!(group: 1)
-  end
-
 end

@@ -1,9 +1,9 @@
-app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash){
+app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies){
   'use strict';
 
-
-  var redirectToCreateAccount = function() {
-    window.location.pathname = "/create_account";
+  var saveToCookies = function() {
+    $cookies.anonRhymeTitle = $scope.rhyme.title;
+    $cookies.anonRhymedText = $scope.rhyme.rhymed_text;
   };
 
   var alterText = function() {
@@ -18,14 +18,16 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
 
   if (userType === 'anon') {
     $scope.rhymeFields = {
-      submitText: "Create free account to save work",
-      submitMethod: redirectToCreateAccount
+      submitText: "Temporary Save",
+      submitMethod: saveToCookies
     }
+    $scope.showCreateAccountButton = true;
   } else {
     $scope.rhymeFields = {
       submitText: "Save",
       submitMethod: alterText
     }
+    $scope.showCreateAccountButton = false;
   }
 
   var rhymeById = function(id) {
@@ -34,7 +36,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     });
   };
 
-  var fetchRhymes = function() {
+  var fetchUserRhymes = function() {
     User.rhymes({user_id: userId}, function(data) {
       $scope.rhymes = data.rhymes;
       $scope.rhyme = rhymeById($stateParams.rhyme_id);
@@ -45,6 +47,20 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
         angularFlash.alertDanger('You can not edit Rhymes that you did not create.');
       }
     });
+  };
+
+  var fetchAnonRhyme = function() {
+    $scope.rhyme = {title: $cookies.anonRhymeTitle,
+            original_text: $cookies.anonOriginalText,
+              rhymed_text: $cookies.anonRhymedText};
+  };
+
+  var fetchRhymes = function() {
+    if (userType === 'anon') {
+      fetchAnonRhyme();
+    } else {
+      fetchUserRhymes();
+    }
   }
 
   if (rhyme.original_text === '') {
@@ -52,5 +68,11 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   } else {
     $scope.rhyme = rhyme;
   }
+
+
+  $scope.redirectToCreateAccount = function() {
+    window.location.hash = "";
+    window.location.pathname = "/create_account";
+  };
 
 }]);

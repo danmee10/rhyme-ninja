@@ -7,8 +7,8 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
-    var token = "<%= form_authenticity_token %>";
-    var userId = "<%= @user.id %>";
-    var userType = "<%= @user.group %>";
+    var token    = "<%= form_authenticity_token %>";
+    var userId   = "<%= @user.try(:id) %>";
+    var userType = "<%= @user.present? ? 'standard' : 'anon' %>";
   </script>
 <% end %>

@@ -19,6 +19,7 @@
 //= require angular-resource
 //= require angular-rails-templates
 //= require angular-ui-router
+//= require angular-cookies
 //= require ./angular_ninja/app
 //= require_tree ./angular_ninja/ninja
 //= require_tree ./angular_ninja/user

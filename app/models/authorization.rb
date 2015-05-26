@@ -1,6 +1,5 @@
 class Authorization < ActiveRecord::Base
   belongs_to :user
-  belongs_to :identity, dependent: :destroy
 
   validates_presence_of :user_id, :uid, :provider
   validates_uniqueness_of :uid, :scope => :provider
@@ -17,14 +16,8 @@ class Authorization < ActiveRecord::Base
   end
 
   def self.create_from_hash(hash, user = nil)
-    usr = User.find_convert_or_create(hash, user)
-    if hash['provider'] == 'identity'
-      i = Identity.where(email: hash["info"]["email"]).first
-      usr.update!(name: hash['info']['name'])
-      Authorization.create(user: usr, uid: hash['uid'], provider: hash['provider'], identity: i)
-    else
-      Authorization.create(user: usr, uid: hash['uid'], provider: hash['provider'])
-    end
+    user ||= User.create_from_hash!(hash)
+    Authorization.create(user: user, uid: hash['uid'], provider: hash['provider'])
   end
 
 end
