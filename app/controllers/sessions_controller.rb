@@ -27,9 +27,9 @@ class SessionsController < ApplicationController
            rhymed_text: cookies[:anonRhymedText],
          original_text: cookies[:anonOriginalText],
                  title: cookies[:anonRhymeTitle])
-    cookies[:anonRhymeTitle] = nil
-    cookies[:anonOriginalText] = nil
-    cookies[:anonRhymedText] = nil
+    cookies.delete(:anonRhymeTitle)
+    cookies.delete(:anonOriginalText)
+    cookies.delete(:anonRhymedText)
   end
 
   def temp_rhyme_present?
