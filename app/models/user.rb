@@ -6,16 +6,6 @@ class User < ActiveRecord::Base
     create(name: hash['info']['name'])
   end
 
-  def self.find_convert_or_create(hash, user)
-    return create_from_hash!(hash) if user.nil?
-    if user.standard?
-      user
-    else
-      user.update!(group: 'standard')
-      user
-    end
-  end
-
   def unauthorized_provider_names
     Authorization::PROVIDERS.keys - authorizations.pluck(:provider)
   end
