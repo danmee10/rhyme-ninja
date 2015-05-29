@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 describe Rhyme do
-  describe 'Validations' do
-    it 'has a valid factory' do
-      expect(build(:rhyme)).to be_valid
-    end
+  describe 'Associations' do
+    it 'belongs to a User' do
+      user = create(:user)
+      rhyme = create(:rhyme, user: user)
 
-    it 'is invalid without original_text' do
-      expect(build(:rhyme, original_text: nil)).to_not be_valid
+      expect(rhyme.user).to eq(user)
     end
   end
 
@@ -21,13 +20,13 @@ describe Rhyme do
     end
   end
 
-  describe 'Associations' do
-    it 'belongs to a User' do
-      user = create(:user)
-      rhyme = create(:rhyme, user: user)
+  describe 'Validations' do
+    it 'has a valid factory' do
+      expect(build(:rhyme)).to be_valid
+    end
 
-      expect(rhyme.user).to eq(user)
+    it 'is invalid without original_text' do
+      expect(build(:rhyme, original_text: nil)).to_not be_valid
     end
   end
-
 end

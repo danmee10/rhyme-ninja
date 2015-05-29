@@ -8,13 +8,6 @@ describe Authorization do
 
       expect(authorization.user).to eq(user)
     end
-
-    it 'belongs_to Identity' do
-      identity = create(:identity)
-      authorization = create(:authorization, identity: identity)
-
-      expect(authorization.identity).to eq(identity)
-    end
   end
 
   describe "Validations" do
@@ -61,45 +54,22 @@ describe Authorization do
     end
 
     describe ".create_from_hash" do
-      let(:hash) {{'uid' => 'uidstring', 'provider' => 'twitter', 'info' => { 'name' => 'User Name'}}}
+      let(:hash) {{'uid' => 'uidstring', 'provider' => 'twitter', 'info' => { 'name' => 'Fake Name'}}}
 
       it "creates an Authorization record from a hash with uid and provider keys" do
-        expect(Authorization.create_from_hash(hash)).to be_valid
+        auth = Authorization.create_from_hash(hash)
+
+        expect(auth).to be_valid
+        expect(auth.user.name).to eq("Fake Name")
       end
 
       it "optionally accepts a user" do
         user = create(:user)
 
-        expect(Authorization.create_from_hash(hash, user)).to be_valid
-      end
-
-      it "converts that user record to standard if they are anon" do
-        user = create(:user, group: 'anon')
         auth = Authorization.create_from_hash(hash, user)
-
         expect(auth).to be_valid
-        expect(auth.user.group).to eq('standard')
+        expect(auth.user.name).to eq("User Name")
       end
-
-      it "creates associated identity object and applies that name to associated user model if provider = identity" do
-        identity_hash = {
-                          'uid' => 'uidstring',
-                     'provider' => 'identity',
-                         'info' => {
-                            'name' =>'New User Name',
-                            'email' => 'iden@email.com'
-                          }
-                        }
-
-        user = create(:user, name: nil)
-        create(:identity, email: 'iden@email.com')
-        auth = Authorization.create_from_hash(identity_hash, user)
-
-        expect(auth).to be_valid
-        expect(auth.user.name).to eq('New User Name')
-        expect(auth.identity).to_not be_nil
-      end
-
     end
   end
 end

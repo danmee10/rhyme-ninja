@@ -1,15 +1,6 @@
 FactoryGirl.define do
   factory :user do
     name        'User Name'
-    group       0
-
-    trait :standard do
-      group  0
-    end
-
-    trait :anon do
-      group  1
-    end
 
     factory :user_with_rhymes do
       transient do

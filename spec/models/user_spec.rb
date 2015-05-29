@@ -20,6 +20,7 @@ describe User do
         user = User.create_from_hash!(hash)
 
         expect(user).to be_valid
+        expect(user.name).to eq("Fake Name")
       end
     end
   end
