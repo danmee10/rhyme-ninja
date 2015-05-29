@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def signed_in?
-    current_user.present? && !current_user.anon?
+    current_user.present?
   end
 
   helper_method :current_user, :signed_in?
@@ -32,12 +32,6 @@ class ApplicationController < ActionController::Base
         format.json { raise 'UnauthorizedError' }
       end
     end
-  end
-
-  protected
-
-  def create_anon_if_no_current
-    self.current_user ||= User.create!(group: 1)
   end
 
 end

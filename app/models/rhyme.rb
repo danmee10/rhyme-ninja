@@ -7,4 +7,6 @@ class Rhyme < ActiveRecord::Base
   }
 
   scope :public_rhymes, -> { where(visibility: 0) }
+
+  validates :original_text, presence: true
 end

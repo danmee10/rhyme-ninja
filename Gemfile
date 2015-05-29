@@ -17,6 +17,7 @@ gem 'angular-rails-templates'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router'
   gem 'rails-assets-lodash'
+  gem 'rails-assets-angular-cookies'
 end
 
 # Oauth
@@ -41,5 +42,11 @@ group :development, :test do
   # gem 'spring', '~> 1.3.4'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'pry'
+  gem 'rspec-rails', '~> 3.0'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'simplecov', :require => false, :group => :test
 end
 

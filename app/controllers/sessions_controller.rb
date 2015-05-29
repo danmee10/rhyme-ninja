@@ -11,11 +11,28 @@ class SessionsController < ApplicationController
     end
     self.current_user = @auth.user
 
+    add_temp_rhyme if current_user.authorizations.count == 1 && temp_rhyme_present?
     redirect_to root_url, notice: "Welcome, #{current_user.name}."
   end
 
   def destroy
     session[:user_id] = nil
     redirect_to root_url, notice: "Signed out!"
+  end
+
+  private
+
+  def add_temp_rhyme
+    Rhyme.create!(user: current_user,
+           rhymed_text: cookies[:anonRhymedText],
+         original_text: cookies[:anonOriginalText],
+                 title: cookies[:anonRhymeTitle])
+    cookies.delete(:anonRhymeTitle)
+    cookies.delete(:anonOriginalText)
+    cookies.delete(:anonRhymedText)
+  end
+
+  def temp_rhyme_present?
+    cookies[:anonRhymedText].present? && cookies[:anonOriginalText].present?
   end
 end

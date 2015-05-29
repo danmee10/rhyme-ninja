@@ -19,7 +19,6 @@ app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', 'Rh
 
   $scope.deleteRhyme = function(rhymeId) {
     if (confirm("Clicking OK will permanently delete your Rhyme. Are you sure?")) {
-      console.log("sanmee")
       Rhyme.delete({user_id: userId, id: rhymeId, authenticity_token: token}, function(response){
         angularFlash.alertSuccess('Rhyme successfully deleted!');
         $scope.rhymes = _.reject($scope.rhymes, function(r){
