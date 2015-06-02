@@ -13,6 +13,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # assets
 gem 'twitter-bootstrap-rails'
 gem 'angularjs-rails'
+gem "jasmine"
 gem 'angular-rails-templates'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router'
