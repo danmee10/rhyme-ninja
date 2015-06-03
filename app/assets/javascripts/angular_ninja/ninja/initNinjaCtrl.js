@@ -1,14 +1,10 @@
 app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$cookies', function ($scope, Rhyme, $location, rhyme, $cookies){
   'use strict';
 
-  var setSessionVars = function() {
-    $scope.session = {
-      user_id: userId,
-      authenticity_token: token
-    }
-  };
-  setSessionVars();
-
+  $scope.session = {
+    user_id: userId,
+    authenticity_token: token
+  }
   var saveRhymeForUser = function(user_id, val, title, authenticity_token){
       Rhyme.save({user_id: user_id,
                     title: title,

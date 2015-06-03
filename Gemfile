@@ -13,7 +13,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # assets
 gem 'twitter-bootstrap-rails'
 gem 'angularjs-rails'
-gem "jasmine"
 gem 'angular-rails-templates'
 source 'https://rails-assets.org' do
   gem 'rails-assets-angular-ui-router'
@@ -38,6 +37,7 @@ gem 'responders'
 
 
 group :development, :test do
+  gem 'jasmine'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   # gem 'spring', '~> 1.3.4'
