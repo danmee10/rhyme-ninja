@@ -1,7 +1,7 @@
 app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', 'Rhyme', function ($scope, User, rhyme, angularFlash, Rhyme){
   'use strict'
 
-  if (userType === 'anon') {
+  if (anonUser) {
     window.location.hash = '/';
     angularFlash.alertDanger('Create account to view your saved rhymes!');
   }

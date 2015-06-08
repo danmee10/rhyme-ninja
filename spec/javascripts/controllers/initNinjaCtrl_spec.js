@@ -9,20 +9,20 @@ describe('Controller: ninja/initNinjaCtrl', function(){
     $controller = _$controller_;
   }));
 
-  var setPageVars = function(uid, token) {
+  var setPageVars = function(uid, token, anonUser) {
     window.userId = uid;
     window.token = token;
+    window.anonUser = anonUser;
   }
 
-  describe('$scope.session', function(){
-    it('contains the userId and authenticity token from the page.', function(){
+  describe('$scope.rhyme', function(){
+    it('sets the initial value of the title and original_text of the rhyme to empty string.', function(){
       var $scope = {};
-      setPageVars(null, null);
-      $controller('initNinjaCtrl', { $scope: $scope })
+      setPageVars(null, null, true);
+      $controller('initNinjaCtrl', { $scope: $scope });
 
-      expect($scope.session.user_id).toEqual(null)
-      expect($scope.session.authenticity_token).toEqual(null)
+      expect($scope.rhyme.title).toEqual('');
+      expect($scope.rhyme.originalText).toEqual('');
     });
   });
-
 });
