@@ -16,7 +16,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     });
   };
 
-  if (userType === 'anon') {
+  if (anonUser) {
     $scope.rhymeFields = {
       submitText: "Temporary Save",
       submitMethod: saveToCookies
@@ -56,7 +56,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   };
 
   var fetchRhymes = function() {
-    if (userType === 'anon') {
+    if (anonUser) {
       fetchAnonRhyme();
     } else {
       fetchUserRhymes();

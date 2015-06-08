@@ -37,6 +37,7 @@ gem 'responders'
 
 
 group :development, :test do
+  gem 'jasmine'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   # gem 'spring', '~> 1.3.4'
