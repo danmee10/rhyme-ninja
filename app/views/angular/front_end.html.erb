@@ -9,6 +9,10 @@
   <script type="text/javascript">
     var token    = "<%= form_authenticity_token %>";
     var userId   = "<%= @user.try(:id) %>";
-    var anonUser = "<%= @user.present? ? false : true %>";
+    if ("<%= @user.present? %>" === 'true'){
+      var anonUser = false;
+    } else {
+      var anonUser = true;
+    }
   </script>
 <% end %>
