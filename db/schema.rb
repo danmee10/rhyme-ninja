@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150529171011) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
     t.string   "uid"
@@ -39,7 +42,7 @@ ActiveRecord::Schema.define(version: 20150529171011) do
     t.integer  "visibility",    default: 0
   end
 
-  add_index "rhymes", ["user_id"], name: "index_rhymes_on_user_id"
+  add_index "rhymes", ["user_id"], name: "index_rhymes_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
