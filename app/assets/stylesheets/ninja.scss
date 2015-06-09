@@ -25,3 +25,30 @@
     }
   }
 }
+
+#the-ninja {
+  .original-text-column {
+    border-right: 1px solid lightgrey;
+    h3.title, .original-text {
+      text-align: center;
+    }
+  }
+  .rhymed-text {
+    input, textarea, button {
+      display: block;
+      margin: 0 auto;
+    }
+    input, textarea {
+      width: 300px;
+      text-align: center;
+    }
+    textarea {
+      margin: 30px auto;
+      height: 600px;
+    }
+  }
+  button.create-account-button {
+    margin: 60px auto;
+    display: block;
+  }
+}

@@ -1,9 +1,9 @@
 <div class="container" id="the-ninja">
   <div class="row">
-    <div class="col-md-6">
-      <div class="title">
+    <div class="col-md-6 original-text-column">
+      <h3 class="title">
         {{ rhyme.title }}
-      </div>
+      </h3>
       <div class="original-text">
         {{ rhyme.original_text }}
       </div>
@@ -15,21 +15,20 @@
 
         <form>
           <input type='text' ng-model="rhyme.title" class="title-box">
-          <br>
-          <br>
-          <br>
           <textarea class="rhyme-box" ng-model="rhyme.rhymed_text"></textarea>
-          <br>
           <button ng-click="rhymeFields.submitMethod()" class="btn ninja-button">
             {{ rhymeFields.submitText }}
           </button>
         </form>
 
 
-        <button ng-show="showCreateAccountButton" ng-click="redirectToCreateAccount()" class="btn btn-default">Create Account To Permanently Save Work!</button>
-
       </div>
     </div>
-
+  </div>
+  <div class="row">
+  <button ng-show="showCreateAccountButton" ng-click="redirectToCreateAccount()" class="btn btn-default create-account-button">
+    Create Account To Permanently Save Work!
+  </button>
+  <faq page-name="theNinja"></faq>
   </div>
 </div>
