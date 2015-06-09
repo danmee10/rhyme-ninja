@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
     self.current_user = @auth.user
 
     add_temp_rhyme if current_user.authorizations.count == 1 && temp_rhyme_present?
-    redirect_to root_url, notice: "Welcome, #{current_user.name}."
+    redirect_to "/#/my-rhymes", notice: "Welcome, #{current_user.name}."
   end
 
   def destroy
