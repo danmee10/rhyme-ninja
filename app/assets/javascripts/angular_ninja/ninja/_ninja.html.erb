@@ -25,10 +25,10 @@
       </div>
     </div>
   </div>
-  <div class="row">
-  <button ng-show="anonUser" ng-click="redirectToCreateAccount()" class="btn btn-default create-account-button">
-    Create Account To Permanently Save Work!
-  </button>
-  <faq page-name="theNinja" ng-show="anonUser"></faq>
+  <div class="row" ng-show="anonUser">
+    <button ng-click="redirectToCreateAccount()" class="btn btn-default create-account-button">
+      Create Account To Permanently Save Work!
+    </button>
+    <faq page-name="theNinja"></faq>
   </div>
 </div>
