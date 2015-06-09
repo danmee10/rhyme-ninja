@@ -21,6 +21,7 @@
 //= require angular-ui-router
 //= require angular-cookies
 //= require ./angular_ninja/app
+//= require_tree ./angular_ninja/faq
 //= require_tree ./angular_ninja/ninja
 //= require_tree ./angular_ninja/user
 //= require_tree ./angular_ninja/public_search

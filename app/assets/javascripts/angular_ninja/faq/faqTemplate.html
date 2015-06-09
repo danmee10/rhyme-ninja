@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="faq">
+    <div class="reveal-button btn btn-info" ng-click="toggleFAQ()">
+      Frequently Asked Questions
+    </div>
+
+    <div class="q-and-a">
+      <div class="question" ng-repeat-start="faq in faqs">
+        <p>
+          {{ faq.question }}
+        </p>
+      </div>
+      <div class="answer" ng-repeat-end>
+        <p>
+          {{ faq.answer }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

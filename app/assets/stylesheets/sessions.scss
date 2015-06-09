@@ -42,21 +42,3 @@ form.password-sign-up-form {
     margin-top: 20px;
   }
 }
-
-.faq {
-  text-align: center;
-  margin-top: 80px;
-  .q-and-a {
-    display: none;
-    width: 50%;
-    margin: 0 auto;
-    text-align: left;
-    margin-top: 25px;
-    .question {
-      font-weight: bold;
-    }
-    .answer {
-      margin-left: 20px;
-    }
-  }
-}
