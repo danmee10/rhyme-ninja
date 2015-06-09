@@ -21,13 +21,13 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
       submitText: "Temporary Save",
       submitMethod: saveToCookies
     }
-    $scope.showCreateAccountButton = true;
+    $scope.anonUser = true;
   } else {
     $scope.rhymeFields = {
       submitText: "Save",
       submitMethod: alterText
     }
-    $scope.showCreateAccountButton = false;
+    $scope.anonUser = false;
   }
 
   var rhymeById = function(id) {
