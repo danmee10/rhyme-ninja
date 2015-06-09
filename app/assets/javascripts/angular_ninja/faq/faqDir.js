@@ -48,12 +48,24 @@ app.directive('faq', function() {
         ]
       };
 
+      var initNinjaFAQs = function() {
+        $scope.faqs = [
+          {
+            question: "What is this and what do I do?!",
+            answer: "This is the RhymeNinja.  Enter a block of text above and then enter the Ninja to transform it into a Rhyme!"
+          }
+        ]
+      };
+
       switch ($scope.pageName) {
         case 'createAccount':
           createAccountFAQs();
           break;
         case 'theNinja':
           ninjaFAQs();
+          break;
+        case 'initNinja':
+          initNinjaFAQs();
           break;
       };
 
