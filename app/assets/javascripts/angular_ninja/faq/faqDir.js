@@ -38,7 +38,7 @@ app.directive('faq', function() {
             answer: "This is the core of RhymeNinja.  It allows you to take the block of text on the left and turn it into a rhyme on the right."
           },
           {
-            question: "Why wouldn't I just use like...any word processor...or a pieece of paper?",
+            question: "Why wouldn't I just use like...any word processor...or a piece of paper?",
             answer: "Currently, RhymeNinja offers no advantages over these methods.  In the future, a suite of tools will be added that will make rhyming a breeze!"
           },
           {
@@ -52,7 +52,7 @@ app.directive('faq', function() {
         $scope.faqs = [
           {
             question: "What do I do?!",
-            answer: "Enter a block of text above and then Enter the Ninja to transform it into a Rhyme!"
+            answer: "Type or paste a block of text above and then Enter the Ninja to transform it into a Rhyme!"
           }
         ]
       };
