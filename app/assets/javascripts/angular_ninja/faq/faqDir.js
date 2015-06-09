@@ -43,7 +43,7 @@ app.directive('faq', function() {
           },
           {
             question: "What does 'Temporary Save' mean?",
-            answer: "If you are seeing that, it means that you are not logged in.  Clicking Temporary Save will store any changes you make on your browser's cookies, and will make that rhyme available to your new account should you make one while they are stored."
+            answer: "Temporary Save will store any changes you make in your browser's cookies, and will make that rhyme available to your new account should you make one while they are stored."
           }
         ]
       };
@@ -51,8 +51,8 @@ app.directive('faq', function() {
       var initNinjaFAQs = function() {
         $scope.faqs = [
           {
-            question: "What is this and what do I do?!",
-            answer: "This is the RhymeNinja.  Enter a block of text above and then enter the Ninja to transform it into a Rhyme!"
+            question: "What do I do?!",
+            answer: "Enter a block of text above and then Enter the Ninja to transform it into a Rhyme!"
           }
         ]
       };
