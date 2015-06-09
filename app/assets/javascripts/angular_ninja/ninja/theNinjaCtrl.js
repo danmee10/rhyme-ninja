@@ -2,8 +2,8 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   'use strict';
 
   var saveToCookies = function() {
-    $cookies.anonRhymeTitle = $scope.rhyme.title;
-    $cookies.anonRhymedText = $scope.rhyme.rhymed_text;
+    $cookies.put('anonRhymeTitle', $scope.rhyme.title);
+    $cookies.put('anonRhymedText', $scope.rhyme.rhymed_text);
   };
 
   var alterText = function() {
@@ -50,9 +50,9 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   };
 
   var fetchAnonRhyme = function() {
-    $scope.rhyme = {title: $cookies.anonRhymeTitle,
-            original_text: $cookies.anonOriginalText,
-              rhymed_text: $cookies.anonRhymedText};
+    $scope.rhyme = {title: $cookies.get('anonRhymeTitle'),
+            original_text: $cookies.get('anonOriginalText'),
+              rhymed_text: $cookies.get('anonRhymedText')};
   };
 
   var fetchRhymes = function() {

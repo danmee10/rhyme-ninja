@@ -30,9 +30,9 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$cook
   };
 
   var saveRhymeForAnon = function() {
-    $cookies.anonRhymeTitle = $scope.rhyme.title;
-    $cookies.anonOriginalText = $scope.rhyme.originalText;
-    $cookies.anonRhymedText = $scope.rhyme.originalText;
+    $cookies.put('anonRhymeTitle', $scope.rhyme.title);
+    $cookies.put('anonOriginalText', $scope.rhyme.originalText);
+    $cookies.put('anonRhymedText', $scope.rhyme.originalText);
     $location.path('/ninja/');
   };
 }]);
