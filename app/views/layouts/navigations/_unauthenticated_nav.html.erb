@@ -19,8 +19,10 @@
     </li>
     <li class="divider"></li>
     <li class="password-sign-in">
-      <%= image_tag('ninja_icon.png', class: 'sign-in-ninja-icon') %>
-        Email
+      <div class="form-toggle">
+        <%= image_tag('ninja_icon.png', class: 'sign-in-ninja-icon') %>
+          Email
+      </div>
       <%= render partial: "shared/forms/password_sign_in" %>
     </li>
   </ul>
@@ -33,10 +35,9 @@
 <% content_for :javascript do %>
   <script type="text/javascript">
     $(function(){
-      $('li.password-sign-in').click(function(e){
+      $('li.password-sign-in > .form-toggle').click(function(e){
         e.stopPropagation();
         $('form.password-sign-in-form').toggle();
-        $(this).toggle();
       });
     });
   </script>
