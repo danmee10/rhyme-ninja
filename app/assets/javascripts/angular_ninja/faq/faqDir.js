@@ -53,6 +53,10 @@ app.directive('faq', function() {
           {
             question: "What do I do?!",
             answer: "Type or paste a block of text above and then Enter the Ninja to transform it into a Rhyme!"
+          },
+          {
+            question: "This background is unrelated to the content of the website.",
+            answer: "That is correct."
           }
         ]
       };

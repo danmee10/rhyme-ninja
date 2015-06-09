@@ -1,4 +1,5 @@
 .rhyme-ninja-nav {
+  margin-bottom: 0px;
   li.nav-provider-sign-in {
     padding: 5px 10px;
     img {
@@ -11,9 +12,6 @@
     }
   }
   li.password-sign-in {
-    &:hover {
-
-    }
     padding: 5px 10px;
     img.sign-in-ninja-icon {
       display: inline;
