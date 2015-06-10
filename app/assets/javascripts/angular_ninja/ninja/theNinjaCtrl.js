@@ -1,4 +1,4 @@
-app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies){
+app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', 'toolBelt', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies, toolBelt){
   'use strict';
 
   var saveToCookies = function saveToCookies() {
@@ -68,6 +68,8 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
   } else {
     $scope.rhyme = rhyme;
   }
+
+  $scope.rhymeTools = toolBelt.processText($scope.rhymedText);
 
   $scope.redirectToCreateAccount = function() {
     window.location.hash = "";
