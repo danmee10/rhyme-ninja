@@ -1,17 +1,17 @@
 app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies){
   'use strict';
 
-  var saveToCookies = function() {
+  var saveToCookies = function saveToCookies() {
     $cookies.put('anonRhymeTitle', $scope.rhyme.title);
-    $cookies.put('anonRhymedText', $scope.rhyme.rhymed_text);
+    $cookies.put('anonRhymedText', $scope.rhyme.rhymedText);
   };
 
-  var alterText = function() {
+  var alterText = function alterText() {
     var alteredRhyme = $scope.rhyme;
     Rhyme.update({ user_id: alteredRhyme.user_id,
                         id: alteredRhyme.id,
                      title: alteredRhyme.title,
-               rhymed_text: alteredRhyme.rhymed_text,
+               rhymed_text: alteredRhyme.rhymedText,
         authenticity_token: token
     });
   };
@@ -51,8 +51,8 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
 
   var fetchAnonRhyme = function() {
     $scope.rhyme = {title: $cookies.get('anonRhymeTitle'),
-            original_text: $cookies.get('anonOriginalText'),
-              rhymed_text: $cookies.get('anonRhymedText')};
+            originalText: $cookies.get('anonOriginalText'),
+              rhymedText: $cookies.get('anonRhymedText')};
   };
 
   var fetchRhymes = function() {
@@ -63,12 +63,11 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     }
   }
 
-  if (rhyme.original_text === '') {
+  if (rhyme.originalText === '') {
     fetchRhymes();
   } else {
     $scope.rhyme = rhyme;
   }
-
 
   $scope.redirectToCreateAccount = function() {
     window.location.hash = "";
