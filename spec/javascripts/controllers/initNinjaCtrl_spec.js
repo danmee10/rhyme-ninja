@@ -34,10 +34,11 @@ describe('Controller: ninja/initNinjaCtrl', function(){
       setPageVars(null, null, true);
       $controller('initNinjaCtrl', { $scope: $scope, $cookies: $cookies });
 
-      expect($cookies.get('anonOriginalText')).toEqual('');
-      $scope.rhyme.originalText = "This is some originalText"
+      expect($cookies.get('anonOriginalText')).not.toBeDefined();
+      $scope.rhyme.originalText = "This is some originalText";
       $scope.initNinja();
       expect($cookies.get('anonOriginalText')).toEqual("This is some originalText");
+      $cookies.remove('anonOriginalText');
     }));
 
     it('saves rhyme input through the Rhyme API if anonUser is false', function(){
