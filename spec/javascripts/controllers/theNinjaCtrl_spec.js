@@ -62,6 +62,9 @@ describe('Controller: ninja/theNinjaCtrl', function(){
       expect($scope.rhyme.title).toEqual("this is a title");
     });
     it('is retrieved from the $cookies, if rhyme service is empty and anonUser is true', inject(function($cookies){
+      $cookies.remove('anonRhymeTitle');
+      $cookies.remove('anonOriginalText');
+      $cookies.remove('anonRhymedText');
       setPageVars(null, null, true);
       var mockRhyme = {
         originalText: "",

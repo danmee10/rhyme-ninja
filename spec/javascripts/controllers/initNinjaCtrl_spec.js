@@ -31,6 +31,7 @@ describe('Controller: ninja/initNinjaCtrl', function(){
     var $cookies;
 
     it('saves rhyme input on $cookies if anonUser is true', inject(function($cookies){
+      $cookies.remove('anonOriginalText');
       setPageVars(null, null, true);
       $controller('initNinjaCtrl', { $scope: $scope, $cookies: $cookies });
 
