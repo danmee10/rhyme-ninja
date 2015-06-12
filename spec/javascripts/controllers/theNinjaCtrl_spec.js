@@ -3,13 +3,20 @@
 describe('Controller: ninja/theNinjaCtrl', function(){
   beforeEach(module('rhymeNinja'));
 
-  var $controller, $rootScope, $scope;
+  var $controller, $rootScope, $scope, mockToolBelt;
 
   beforeEach(inject(function(_$controller_, _$rootScope_){
     $controller = _$controller_;
     $rootScope = _$rootScope_;
     $scope = $rootScope.$new();
   }));
+
+  beforeEach(function(){
+    mockToolBelt = {
+      wrapText: function(a, b){ return; }
+    }
+    $scope.rhyme = {rhymedText: ""};
+  });
 
   var setPageVars = function(uid, token, anonUser) {
     window.userId = uid;
@@ -20,14 +27,14 @@ describe('Controller: ninja/theNinjaCtrl', function(){
   describe('$scope.rhymeFields', function(){
     it("if anonUser true, sets submitText and submitMethod to 'Temporary Save' and saveToCookies respectively.", function(){
       setPageVars(null, null, true);
-      $controller('theNinjaCtrl', { $scope: $scope });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope });
 
       expect($scope.rhymeFields.submitText).toEqual('Temporary Save');
       expect($scope.rhymeFields.submitMethod.name).toEqual('saveToCookies');
     });
     it("if anonUser false, sets submitText and submitMethod to 'Save' and alterText respectively.", function(){
       setPageVars(null, null, false);
-      $controller('theNinjaCtrl', { $scope: $scope });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope });
 
       expect($scope.rhymeFields.submitText).toEqual('Save');
       expect($scope.rhymeFields.submitMethod.name).toEqual('alterText');
@@ -37,13 +44,13 @@ describe('Controller: ninja/theNinjaCtrl', function(){
   describe('$scope.anonUser', function() {
     it("is true if window.anonUser is true.", function(){
       setPageVars(null, null, true);
-      $controller('theNinjaCtrl', { $scope: $scope });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope });
 
       expect($scope.anonUser).toEqual(true);
     });
     it("is false if window.anonUser is false.", function(){
       setPageVars(null, null, false);
-      $controller('theNinjaCtrl', { $scope: $scope });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope });
 
       expect($scope.anonUser).toEqual(false);
     });
@@ -56,7 +63,7 @@ describe('Controller: ninja/theNinjaCtrl', function(){
         originalText: "this is originalText",
         title: "this is a title"
       }
-      $controller('theNinjaCtrl', { $scope: $scope, rhyme: mockRhyme });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope, rhyme: mockRhyme });
 
       expect($scope.rhyme.originalText).toEqual('this is originalText');
       expect($scope.rhyme.title).toEqual("this is a title");
@@ -73,7 +80,7 @@ describe('Controller: ninja/theNinjaCtrl', function(){
       $cookies.put('anonRhymeTitle', 'this is title');
       $cookies.put('anonOriginalText', 'this is original');
       $cookies.put('anonRhymedText', 'this is rhymed');
-      $controller('theNinjaCtrl', { $scope: $scope, rhyme: mockRhyme, $cookies: $cookies });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope, rhyme: mockRhyme, $cookies: $cookies });
 
       expect($scope.rhyme.title).toEqual("this is title");
       expect($scope.rhyme.originalText).toEqual("this is original");
@@ -95,7 +102,7 @@ describe('Controller: ninja/theNinjaCtrl', function(){
           return;
         }
       }
-      $controller('theNinjaCtrl', { $scope: $scope, rhyme: mockRhyme, User: mockUserApi });
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope, rhyme: mockRhyme, User: mockUserApi });
 
       expect($scope.rhyme.title).toEqual('user rhyme');
     });

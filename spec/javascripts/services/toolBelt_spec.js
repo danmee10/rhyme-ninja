@@ -23,6 +23,7 @@ describe('Factory: toolBelt', function() {
 
     it('should not break if called with no arguments', function() {
       expect(toolBelt.wrapText()).toEqual('No text.')
+      expect(toolBelt.wrapText('text')).toEqual('No metre.')
     });
   });
 
