@@ -1,20 +1,20 @@
-app.factory('toolBelt', ['metreMachine', function(metreMachine){
+app.factory('textWrapper', ['metreMachine', function(metreMachine){
   'use strict';
 
-  var tb = {};
+  var tw = {};
 
-  tb.wrapText = function(text, metre) {
+  tw.wrapText = function(text, metre) {
     if (_.isUndefined(text) || text ==='') { return "No text."; }
     if (!_.isArray(metre) || metre.length === 0) { return "No metre."; }
     var lineArrs = metreMachine.breakDown(text, metre);
 
-    var wrappedLines = _.map(lineArrs, function(lineArr){
+    var wrappedLines = _.map(lineArrs, function(lineArr, index){
       var wrappedLine = _.map(lineArr, function(el) {
         if (/\W/.test(el)) {
-          var clickFunction = "nonWordClick($event)";
+          var clickFunction = "nonWordClick($event, " + index + ")";
           var itemClass = "non-word";
         } else {
-          var clickFunction = "wordClick($event)";
+          var clickFunction = "wordClick($event, " + index + ")";
           var itemClass = "word";
         }
 
@@ -24,8 +24,8 @@ app.factory('toolBelt', ['metreMachine', function(metreMachine){
       return "<div class='rhyme-line'>" + wrappedLine.join("") + "</div>";
     });
 
-    return "<div class='rhyme-tools'>" + wrappedLines.join("") + "</div>";
+    return "<div class='rhyme-tool-triggers'>" + wrappedLines.join("") + "</div>";
   };
 
-  return tb;
+  return tw;
 }]);
