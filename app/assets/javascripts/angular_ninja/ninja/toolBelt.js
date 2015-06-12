@@ -11,10 +11,10 @@ app.factory('toolBelt', ['metreMachine', function(metreMachine){
     var wrappedLines = _.map(lineArrs, function(lineArr){
       var wrappedLine = _.map(lineArr, function(el) {
         if (/\W/.test(el)) {
-          var clickFunction = "nonWordClick()";
+          var clickFunction = "nonWordClick($event)";
           var itemClass = "non-word";
         } else {
-          var clickFunction = "wordClick()";
+          var clickFunction = "wordClick($event)";
           var itemClass = "word";
         }
 
