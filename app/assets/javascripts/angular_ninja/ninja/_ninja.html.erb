@@ -12,18 +12,7 @@
     <div class="col-md-6">
       <div class="rhymed-text">
 
-        <%if false%>
-        <form>
-          <input type='text' ng-model="rhyme.title" class="title-box">
-          <textarea class="rhyme-box" ng-model="rhyme.rhymed_text"></textarea>
-          <button ng-click="rhymeFields.submitMethod()" class="btn ninja-button">
-            {{ rhymeFields.submitText }}
-          </button>
-        </form>
-        <%end%>
-
-        <div ng-bind-html="rhymeTools"></div>
-
+        <div rnja-compile="rhymeTools"></div>
 
       </div>
     </div>
