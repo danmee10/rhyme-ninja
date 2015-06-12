@@ -1,5 +1,6 @@
 <div class="container" id="the-ninja">
   <div class="row">
+    <rnja-tool-belt content="selectedWord" ng-show="showTools" show-tools="showTools"></rnja-tool-belt>
     <div class="col-md-6 original-text-column">
       <h3 class="title">
         {{ rhyme.title }}
@@ -12,7 +13,7 @@
     <div class="col-md-6">
       <div class="rhymed-text">
 
-        <div rnja-compile="rhymeTools"></div>
+        <div rnja-compile="toolTriggers"></div>
 
       </div>
     </div>

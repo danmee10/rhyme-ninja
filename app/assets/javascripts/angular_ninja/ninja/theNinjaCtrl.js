@@ -1,4 +1,4 @@
-app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', 'toolBelt', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies, toolBelt){
+app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', 'textWrapper', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies, textWrapper){
   'use strict';
 
   var saveToCookies = function saveToCookies() {
@@ -69,7 +69,23 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     $scope.rhyme = rhyme;
   }
 
-  $scope.rhymeTools = toolBelt.processText($scope.rhymedText);
+  $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, [2, 3]);
+  $scope.showTools = false;
+
+  $scope.wordClick = function($event, lineNum) {
+    assemblePopover($($event.target).text());
+    $scope.showTools = true;
+  };
+
+  $scope.nonWordClick = function($event, lineNum) {
+    console.log("nonWordClick")
+  };
+
+  var assemblePopover = function(content) {
+    $scope.selectedWord = {
+      title: content
+    }
+  };
 
   $scope.redirectToCreateAccount = function() {
     window.location.hash = "";

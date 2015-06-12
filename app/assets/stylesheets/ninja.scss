@@ -34,7 +34,7 @@
     }
   }
   .rhymed-text {
-    .rhyme-tools {
+    .rhyme-tool-triggers {
       text-align: center;
       .rhyme-line {
         border-bottom: 1px solid black;
@@ -61,5 +61,24 @@
   button.create-account-button {
     margin: 60px auto;
     display: block;
+  }
+}
+rnja-tool-belt {
+  .rnja-tool-belt {
+    position: absolute;
+    background-color: grey;
+    width: 50%;
+    z-index: 1;
+    span.close-button {
+      float: right;
+      margin-right: 7px;
+      background-color: white;
+      border-radius: 5px;
+      padding: 0px 3px;
+      margin-top: 4px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
 }
