@@ -34,17 +34,26 @@
     }
   }
   .rhymed-text {
-    input, textarea, button {
-      display: block;
-      margin: 0 auto;
-    }
-    input, textarea {
-      width: 300px;
+    .rhyme-tools {
       text-align: center;
-    }
-    textarea {
-      margin: 30px auto;
-      height: 300px;
+      .rhyme-line {
+        border-bottom: 1px solid black;
+        line-height: 40px;
+        &:last-child {
+          border: none;
+        }
+        .rhyme-item {
+          &:hover {
+            cursor: pointer;
+            &.word {
+              background-color: lightyellow;
+            }
+            &.non-word {
+              background-color: lightgrey;
+            }
+          }
+        }
+      }
     }
   }
   button.create-account-button {

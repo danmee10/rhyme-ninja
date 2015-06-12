@@ -9,19 +9,21 @@ describe('Factory: toolBelt', function() {
     toolBelt = _toolBelt_;
   }));
 
-  describe("tb.processText()", function(){
+  describe("tb.wrapText()", function(){
     it('takes a string and returns a string', function() {
-      var returnType = typeof toolBelt.processText("some string");
-      // expect(returnType).toEqual('string');
+      var returnType = typeof toolBelt.wrapText("some string", [1]);
+      expect(returnType).toEqual('string');
     });
 
     it('should return a string that contains html', function() {
-    //   var val = toolBelt.processText("some string");
-    //   expect(val.substring(0, 23)).toEqual("<div class='ninja-text'>");
-    //   expect($(val).children().length()).toEqual(1);
+      var val = toolBelt.wrapText("some string", [1]);
+      expect(val.substring(0, 25)).toEqual("<div class='rhyme-tools'>");
+      expect($(val).children().length).toEqual(2);
     });
 
-
+    it('should not break if called with no arguments', function() {
+      expect(toolBelt.wrapText()).toEqual('No text.')
+    });
   });
 
 });

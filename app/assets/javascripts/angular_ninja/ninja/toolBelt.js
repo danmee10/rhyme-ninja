@@ -4,6 +4,8 @@ app.factory('toolBelt', ['metreMachine', function(metreMachine){
   var tb = {};
 
   tb.wrapText = function(text, metre) {
+    if (_.isUndefined(text) || text ==='') { return "No text."; }
+    if (!_.isArray(metre) || metre.length === 0) { return "No metre."; }
     var lineArrs = metreMachine.breakDown(text, metre);
 
     var wrappedLines = _.map(lineArrs, function(lineArr){
@@ -16,7 +18,7 @@ app.factory('toolBelt', ['metreMachine', function(metreMachine){
           var itemClass = "word";
         }
 
-        return "<span ng-click='" + clickFunction + "' class='" + itemClass + "'>" + el + "</span>";
+        return "<span ng-click='" + clickFunction + "' class='rhyme-item " + itemClass + "'>" + el + "</span>";
       });
 
       return "<div class='rhyme-line'>" + wrappedLine.join("") + "</div>";
