@@ -8,13 +8,13 @@ app.factory('textWrapper', ['metreMachine', function(metreMachine){
     if (!_.isArray(metre) || metre.length === 0) { return "No metre."; }
     var lineArrs = metreMachine.breakDown(text, metre);
 
-    var wrappedLines = _.map(lineArrs, function(lineArr, index){
+    var wrappedLines = _.map(lineArrs, function(lineArr){
       var wrappedLine = _.map(lineArr, function(el) {
         if (/\W/.test(el)) {
-          var clickFunction = "nonWordClick($event, " + index + ")";
+          var clickFunction = "nonWordClick($event)";
           var itemClass = "non-word";
         } else {
-          var clickFunction = "wordClick($event, " + index + ")";
+          var clickFunction = "wordClick($event)";
           var itemClass = "word";
         }
 
