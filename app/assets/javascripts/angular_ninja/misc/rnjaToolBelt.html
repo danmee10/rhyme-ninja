@@ -1,10 +1,24 @@
 <div class="rnja-tool-belt">
   <span class="close-button" ng-click="hideTools()">X</span>
+  <h4 class="tools-title">{{content.title}}</h4>
 
-  <div>
-    <button class="btn btn-default">Rhymes</button>
-    <button class="btn btn-default">Synonyms</button>
-    <button class="btn btn-default">Manual</button>
+  <div class="tool-selectors" ng-show="isSelected(null)">
+    <button class="btn btn-default" ng-click="selectTool('rhymes')">Rhymes</button>
+    <button class="btn btn-default" ng-click="selectTool('synonyms')">Synonyms</button>
+    <button class="btn btn-default" ng-click="selectTool('manual')">Manual</button>
+  </div>
+
+  <div class="rhyme-mathes" ng-show="isSelected('rhymes')">
+    Rhymes
+  </div>
+  <div class="synonyms" ng-show="isSelected('synonyms')">
+    synonyms
+  </div>
+  <div class="manual-form" ng-show="isSelected('manual')">
+    <form ng-submit="changeWord()">
+      <input type='text' ng-model="content.title">
+      <button type='submit' class="btn btn-default">Change</button>
+    </form>
   </div>
 
 

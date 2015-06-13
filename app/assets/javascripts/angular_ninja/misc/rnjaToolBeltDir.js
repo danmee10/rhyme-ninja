@@ -7,11 +7,24 @@ app.directive('rnjaToolBelt',[function() {
       showTools: '='
     },
     controller: function($scope){
+      $scope.selectedTool = null;
+
+
       $scope.hideTools = function() {
         $scope.showTools = false;
-      }
-      $scope.toggleTools = function($event) {
-        console.log("$event.keyCode --> ", $event.keyCode)
+        $scope.selectedTool = null;
+      };
+
+      $scope.selectTool = function(tool) {
+        $scope.selectedTool = tool;
+      };
+
+      $scope.isSelected = function(tool) {
+        return $scope.selectedTool === tool;
+      };
+
+      $scope.changeWord = function() {
+
       };
     }
   };
