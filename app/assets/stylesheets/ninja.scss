@@ -67,8 +67,17 @@ rnja-tool-belt {
   .rnja-tool-belt {
     position: absolute;
     background-color: grey;
-    width: 50%;
     z-index: 1;
+    h4.tools-title {
+      text-align: center;
+      margin: 10px 35px;
+    }
+    .tool-selectors {
+      button {
+        margin: 10px auto;
+        display: block;
+      }
+    }
     span.close-button {
       float: right;
       margin-right: 7px;
