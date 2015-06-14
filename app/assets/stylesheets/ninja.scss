@@ -59,12 +59,13 @@
     }
   }
   button {
-    display: block;
     &.save-rhyme {
+      display: block;
       margin: 0px auto;
       margin-top: 30px;
     }
     &.create-account-button {
+      display: block;
       margin: 0px auto;
       margin-top: 75px;
     }
