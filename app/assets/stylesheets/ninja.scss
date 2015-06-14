@@ -68,9 +68,27 @@ rnja-tool-belt {
     position: absolute;
     background-color: grey;
     z-index: 1;
-    h4.tools-title {
-      text-align: center;
-      margin: 10px 35px;
+    border-radius: 5px;
+    .rnja-header {
+      background-color: white;
+      border: 1px solid grey;
+      border-top-right-radius: 5px;
+      border-top-left-radius: 5px;
+      h4.tools-title {
+        text-align: center;
+        margin: 10px 35px;
+      }
+      span.close-button {
+        float: right;
+        margin-right: 7px;
+        background-color: white;
+        border-radius: 5px;
+        padding: 0px 3px;
+        margin-top: 4px;
+        &:hover {
+          cursor: pointer;
+        }
+      }
     }
     .tool-selectors {
       button {
@@ -78,15 +96,24 @@ rnja-tool-belt {
         display: block;
       }
     }
-    span.close-button {
-      float: right;
-      margin-right: 7px;
-      background-color: white;
-      border-radius: 5px;
-      padding: 0px 3px;
-      margin-top: 4px;
-      &:hover {
-        cursor: pointer;
+    .rhyme-matches {
+      ul {
+        max-height: 300px;
+        overflow: scroll;
+        background-color: whitesmoke;
+        transition: background-color .5s, padding-left .5s;
+        li {
+          &:hover {
+            cursor: pointer;
+            background-color: darken(whitesmoke, 5);
+            padding-left: 15px;
+          }
+        }
+      }
+    }
+    .manual-form {
+      form {
+        margin: 10px;
       }
     }
   }

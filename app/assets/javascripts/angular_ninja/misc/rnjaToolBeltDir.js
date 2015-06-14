@@ -25,7 +25,14 @@ app.directive('rnjaToolBelt',['$http', function($http) {
           case 'synonyms':
             fetchSynonyms();
             break;
+          case 'manual':
+            setTemp();
+            break;
         }
+      }
+
+      var setTemp = function() {
+        $scope.tempContent = $scope.content.word;
       }
 
       $scope.selectTool = function(tool) {
@@ -59,7 +66,7 @@ app.directive('rnjaToolBelt',['$http', function($http) {
         var url = "/api/rhymes/" + $scope.content.word + ".json"
         $http.get(url).success(function(data){
           var spellings = _.map(data, function(d){ return d.spelling; });
-          $scope.rhymes = spellings;
+          $scope.rhymes = _.uniq(spellings);
         }).error(function(msg){
           $scope.rhymes = ["Please contact support."];
         });

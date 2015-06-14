@@ -1,6 +1,8 @@
 <div class="rnja-tool-belt">
-  <span class="close-button" ng-click="hideTools()">X</span>
-  <h4 class="tools-title">{{content.word}}</h4>
+  <div class="rnja-header">
+    <span class="close-button" ng-click="hideTools()">X</span>
+    <h4 class="tools-title">{{content.word}}</h4>
+  </div>
 
   <div class="tool-selectors" ng-show="isSelected(null)">
     <button class="btn btn-default" ng-click="selectTool('rhymes')">
