@@ -47,8 +47,10 @@
           &:hover {
             cursor: pointer;
             font-size: 20px;
+            border-radius: 2px;
+            padding: 1px;
             &.word {
-              background-color: lightyellow;
+              background-color: darken(white, 10);
             }
             &.non-word {
               background-color: lightgrey;
