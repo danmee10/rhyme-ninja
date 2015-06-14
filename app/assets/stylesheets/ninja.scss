@@ -69,9 +69,19 @@
       margin-top: 75px;
     }
   }
+  .footer {
+    border-top: 1px solid black;
+    background-color: white;
+    .powered-by {
+      padding: 15px;
+    }
+  }
 }
 rnja-tool-belt {
   .rnja-tool-belt {
+    -webkit-box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
+    -moz-box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .45);
     position: absolute;
     background-color: grey;
     z-index: 1;
