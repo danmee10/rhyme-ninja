@@ -1,4 +1,4 @@
-app.directive('rnjaToolBelt',[function() {
+app.directive('rnjaToolBelt',['$http', function($http) {
   return {
     restrict: 'E',
     templateUrl: '/misc/rnjaToolBelt.html',
@@ -8,23 +8,61 @@ app.directive('rnjaToolBelt',[function() {
     },
     controller: function($scope){
       $scope.selectedTool = null;
+      $scope.tempContent = '';
 
 
       $scope.hideTools = function() {
         $scope.showTools = false;
         $scope.selectedTool = null;
+        $scope.rhymes = null;
       };
+
+      var prepTool = function(tool) {
+        switch (tool) {
+          case 'rhymes':
+            fetchRhymes();
+            break;
+          case 'synonyms':
+            fetchSynonyms();
+            break;
+        }
+      }
 
       $scope.selectTool = function(tool) {
         $scope.selectedTool = tool;
+        prepTool(tool);
       };
 
       $scope.isSelected = function(tool) {
         return $scope.selectedTool === tool;
       };
 
-      $scope.changeWord = function() {
+      $scope.changeWord = function(word) {
+        if (_.isUndefined(word)){
+          $scope.content.word = $scope.tempContent;
+        } else {
+          $scope.content.word = word;
+        }
+        $scope.hideTools();
+      };
 
+      $scope.cancelChange = function() {
+        $scope.selectedTool = null;
+        $scope.tempContent = '';
+      };
+
+      var fetchSynonyms = function() {
+
+      }
+
+      var fetchRhymes = function() {
+        var url = "/api/rhymes/" + $scope.content.word + ".json"
+        $http.get(url).success(function(data){
+          var spellings = _.map(data, function(d){ return d.spelling; });
+          $scope.rhymes = spellings;
+        }).error(function(msg){
+          $scope.rhymes = ["Please contact support."];
+        });
       };
     }
   };

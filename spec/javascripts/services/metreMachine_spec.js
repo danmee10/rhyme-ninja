@@ -11,7 +11,7 @@ describe('Factory: metreMachine', function() {
 
   describe('mm.breakDown()', function() {
 
-    it('takes a string and returns an array of arrays that contain strings', function() {
+    it('takes a string and returns an array of arrays that contain objects', function() {
       var input = "this is a string";
       var output = metreMachine.breakDown(input, [1]);
 
@@ -19,7 +19,7 @@ describe('Factory: metreMachine', function() {
       _.forEach(output, function(a){
         expect(_.isArray(a)).toEqual(true);
         _.forEach(a, function(subA){
-          expect(_.isString(subA)).toEqual(true);
+          expect(_.isObject(subA)).toEqual(true);
         });
       });
     });
@@ -30,8 +30,8 @@ describe('Factory: metreMachine', function() {
 
       _.forEach(output, function(o){
         var sylCount = 0;
-        _.forEach(o, function(str){
-          sylCount += syllableCounter.bestGuess(str);
+        _.forEach(o, function(obj){
+          sylCount += syllableCounter.bestGuess(obj.word);
         });
         expect(sylCount <= 3).toEqual(true);
       });
@@ -47,8 +47,8 @@ describe('Factory: metreMachine', function() {
       var index = 0;
       _.forEach(output, function(o){
         var sylCount = 0;
-        _.forEach(o, function(str){
-          sylCount += syllableCounter.bestGuess(str);
+        _.forEach(o, function(obj){
+          sylCount += syllableCounter.bestGuess(obj.word);
         });
         expect(sylCount <= syllPattern[index]).toEqual(true);
 

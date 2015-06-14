@@ -1,4 +1,4 @@
-app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$stateParams', 'User', 'angularFlash', '$cookies', 'textWrapper', function ($scope, Rhyme, $location, rhyme, $stateParams, User, angularFlash, $cookies, textWrapper){
+app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 'User', 'angularFlash', '$cookies', 'textWrapper', function ($scope, Rhyme, $location, $stateParams, User, angularFlash, $cookies, textWrapper){
   'use strict';
 
   var saveToCookies = function saveToCookies() {
@@ -40,9 +40,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
     User.rhymes({user_id: userId}, function(data) {
       $scope.rhymes = data.rhymes;
       $scope.rhyme = rhymeById($stateParams.rhyme_id);
-      if (typeof $scope.rhyme !== 'undefined') {
-        $.extend(rhyme, $scope.rhyme);
-      } else {
+      if (_.isUndefined($scope.rhyme)) {
         window.location.hash = '/';
         angularFlash.alertDanger('You can not edit Rhymes that you did not create.');
       }
@@ -62,28 +60,44 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$state
       fetchUserRhymes();
     }
   }
+  fetchRhymes();
 
-  if (rhyme.originalText === '') {
-    fetchRhymes();
-  } else {
-    $scope.rhyme = rhyme;
-  }
+  $scope.selectedWord = {word:'$@--@inItIaLiZeR@--@%', position:[]};
+  $scope.$watch('selectedWord.word',
+    function(newWord, oldWord){
+      if (newWord === "$@--@inItIaLiZeR@--@%") {return;}
+      var sInd = $scope.selectedWord.position[0];
+      var eInd = $scope.selectedWord.position[1] + 1;
+      var end = $scope.rhyme.rhymedText.length - 1;
 
-  $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, [2, 3]);
+      var pre = $scope.rhyme.rhymedText.slice(0, sInd);
+      var post = $scope.rhyme.rhymedText.slice(eInd, end);
+
+      $scope.rhyme.rhymedText = (pre + newWord + post);
+    }
+  );
+
+  $scope.$watch('rhyme.rhymedText',
+    function(newWord){
+      $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, [5, 3]);
+    }
+  );
+
   $scope.showTools = false;
 
-  $scope.wordClick = function($event, lineNum) {
-    assemblePopover($($event.target).text());
+  $scope.wordClick = function(wordObj) {
+    setSelectedWord(wordObj);
     $scope.showTools = true;
   };
 
-  $scope.nonWordClick = function($event, lineNum) {
+  $scope.nonWordClick = function(wordObj) {
     console.log("nonWordClick")
   };
 
-  var assemblePopover = function(content) {
+  var setSelectedWord = function(wordObj) {
     $scope.selectedWord = {
-      title: content
+      word: wordObj.word,
+      position: wordObj.position
     }
   };
 

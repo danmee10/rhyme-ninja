@@ -13,4 +13,10 @@ Rails.application.routes.draw do
     resources :rhymes, except: [:index, :edit]
     get '/rhymes', to: "users#rhymes"
   end
+
+  namespace :api do
+    get 'rhymes/:word', to: 'words#rhymes'
+    get 'synonyms/:word', to: 'words#synonyms'
+  end
+
 end

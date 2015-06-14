@@ -1,12 +1,12 @@
-app.factory('metreMachine', ['syllableCounter', function(syllableCounter){
+app.factory('metreMachine', ['syllableCounter', 'stringMapper', function(syllableCounter, stringMapper){
   'use strict';
 
   var mm = {};
 
   var buildLine = function(subWordArr, lineSyls) {
     var lineSylCount = -1;
-    var line = _.takeWhile(subWordArr, function(word) {
-      lineSylCount += syllableCounter.bestGuess(word);
+    var line = _.takeWhile(subWordArr, function(wordObj) {
+      lineSylCount += syllableCounter.bestGuess(wordObj.word);
       return lineSylCount < lineSyls;
     });
     return line;
@@ -14,7 +14,7 @@ app.factory('metreMachine', ['syllableCounter', function(syllableCounter){
 
   mm.breakDown = function(text, sylCount) {
     var collection = [];
-    var wordArr = text.split(/(\W)/);
+    var wordArr = stringMapper.mapString(text);
 
     var sylIndex = 0;
     while (wordArr.length > 0) {

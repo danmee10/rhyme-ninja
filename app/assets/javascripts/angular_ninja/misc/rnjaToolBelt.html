@@ -1,23 +1,38 @@
 <div class="rnja-tool-belt">
   <span class="close-button" ng-click="hideTools()">X</span>
-  <h4 class="tools-title">{{content.title}}</h4>
+  <h4 class="tools-title">{{content.word}}</h4>
 
   <div class="tool-selectors" ng-show="isSelected(null)">
-    <button class="btn btn-default" ng-click="selectTool('rhymes')">Rhymes</button>
-    <button class="btn btn-default" ng-click="selectTool('synonyms')">Synonyms</button>
-    <button class="btn btn-default" ng-click="selectTool('manual')">Manual</button>
+    <button class="btn btn-default" ng-click="selectTool('rhymes')">
+      Rhymes
+    </button>
+    <button class="btn btn-default" ng-click="selectTool('synonyms')">
+      Synonyms
+    </button>
+    <button class="btn btn-default" ng-click="selectTool('manual')">
+      Manual
+    </button>
   </div>
 
-  <div class="rhyme-mathes" ng-show="isSelected('rhymes')">
-    Rhymes
+  <div class="rhyme-matches" ng-show="isSelected('rhymes')">
+    <div>
+      <ul>
+        <li ng-repeat="rhyme in rhymes" class="word-choice" ng-click="changeWord(rhyme)">{{rhyme}}</li>
+      </ul>
+    </div>
   </div>
+
+
   <div class="synonyms" ng-show="isSelected('synonyms')">
     synonyms
   </div>
+
+
   <div class="manual-form" ng-show="isSelected('manual')">
-    <form ng-submit="changeWord()">
-      <input type='text' ng-model="content.title">
-      <button type='submit' class="btn btn-default">Change</button>
+    <form>
+      <input type='text' ng-model="tempContent">
+      <button ng-click='changeWord()' class="btn btn-default">Change</button>
+      <button ng-click='cancelChange()' class="btn btn-default">Cancel</button>
     </form>
   </div>
 
