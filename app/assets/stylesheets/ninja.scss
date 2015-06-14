@@ -80,14 +80,20 @@ rnja-tool-belt {
       }
       span.close-button {
         float: right;
-        margin-right: 7px;
         background-color: white;
         border-radius: 5px;
         padding: 0px 3px;
-        margin-top: 4px;
+        margin-top: 2px;
+        font-size: 20px;
         &:hover {
           cursor: pointer;
         }
+      }
+      span.back-button {
+        float: left;
+        margin-left: 2px;
+        margin-top: 5px;
+        cursor: pointer;
       }
     }
     .tool-selectors {
@@ -98,6 +104,7 @@ rnja-tool-belt {
     }
     .rhyme-matches {
       ul {
+        border: 1px solid grey;
         max-height: 300px;
         overflow: scroll;
         background-color: whitesmoke;

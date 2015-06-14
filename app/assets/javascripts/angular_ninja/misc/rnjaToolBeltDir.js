@@ -40,6 +40,15 @@ app.directive('rnjaToolBelt',['$http', function($http) {
         prepTool(tool);
       };
 
+      $scope.resetSelectedTool = function() {
+        console.log("danmee")
+        $scope.selectedTool = null;
+      };
+      $scope.$on('resetNinjaTools', function(){
+        $scope.resetSelectedTool();
+        $scope.rhymes = [];
+      });
+
       $scope.isSelected = function(tool) {
         return $scope.selectedTool === tool;
       };

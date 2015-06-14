@@ -86,6 +86,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
   $scope.showTools = false;
 
   $scope.wordClick = function(wordObj) {
+    $scope.$broadcast('resetNinjaTools');
     setSelectedWord(wordObj);
     $scope.showTools = true;
   };

@@ -1,6 +1,7 @@
 <div class="rnja-tool-belt">
   <div class="rnja-header">
-    <span class="close-button" ng-click="hideTools()">X</span>
+    <span class="close-button glyphicon glyphicon-remove-circle" ng-click="hideTools()"></span>
+    <span class="back-button glyphicon glyphicon-chevron-left" ng-click="resetSelectedTool()" ng-show="!isSelected(null)"></span>
     <h4 class="tools-title">{{content.word}}</h4>
   </div>
 
