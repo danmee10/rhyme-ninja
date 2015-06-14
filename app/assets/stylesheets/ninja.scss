@@ -58,9 +58,16 @@
       }
     }
   }
-  button.create-account-button {
-    margin: 60px auto;
+  button {
     display: block;
+    &.save-rhyme {
+      margin: 0px auto;
+      margin-top: 30px;
+    }
+    &.create-account-button {
+      margin: 0px auto;
+      margin-top: 75px;
+    }
   }
 }
 rnja-tool-belt {
