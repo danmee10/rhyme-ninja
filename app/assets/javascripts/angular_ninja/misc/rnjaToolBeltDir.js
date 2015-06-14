@@ -41,7 +41,6 @@ app.directive('rnjaToolBelt',['$http', function($http) {
       };
 
       $scope.resetSelectedTool = function() {
-        console.log("danmee")
         $scope.selectedTool = null;
       };
       $scope.$on('resetNinjaTools', function(){
