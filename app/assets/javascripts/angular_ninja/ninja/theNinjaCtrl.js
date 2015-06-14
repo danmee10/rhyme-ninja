@@ -68,7 +68,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
       if (newWord === "$@--@inItIaLiZeR@--@%") {return;}
       var sInd = $scope.selectedWord.position[0];
       var eInd = $scope.selectedWord.position[1] + 1;
-      var end = $scope.rhyme.rhymedText.length - 1;
+      var end = $scope.rhyme.rhymedText.length;
 
       var pre = $scope.rhyme.rhymedText.slice(0, sInd);
       var post = $scope.rhyme.rhymedText.slice(eInd, end);
