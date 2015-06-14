@@ -282,6 +282,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   database_cleaner
   factory_girl_rails
+  faraday
   figaro
   jasmine
   jbuilder (~> 2.0)
