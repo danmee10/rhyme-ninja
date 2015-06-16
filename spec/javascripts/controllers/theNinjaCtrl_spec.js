@@ -57,17 +57,6 @@ describe('Controller: ninja/theNinjaCtrl', function(){
   });
 
   describe('$scope.rhyme', function() {
-    it('equals the value of the rhyme service if not empty', function(){
-      setPageVars(null, null, true);
-      var mockRhyme = {
-        originalText: "this is originalText",
-        title: "this is a title"
-      }
-      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope, rhyme: mockRhyme });
-
-      expect($scope.rhyme.originalText).toEqual('this is originalText');
-      expect($scope.rhyme.title).toEqual("this is a title");
-    });
     it('is retrieved from the $cookies, if rhyme service is empty and anonUser is true', inject(function($cookies){
       $cookies.remove('anonRhymeTitle');
       $cookies.remove('anonOriginalText');
