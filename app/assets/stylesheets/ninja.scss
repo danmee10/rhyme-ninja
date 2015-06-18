@@ -1,19 +1,39 @@
 #ninja-init-form {
   form {
     margin-top: 70px;
+    .option-inputs {
+      margin: 40px 0px;
+      label {
+        display: block;
+        text-align: center;
+      }
+      .onoffswitch {
+        margin: 0 auto;
+        label.onoffswitch-label {
+          span.onoffswitch-inner:before {
+            padding-left: 0px;
+            padding-right: 10px;
+          }
+        }
+      }
+    }
     .main-inputs {
       text-align: center;
       input.title-box {
         width: 300px;
+        margin: 0 auto;
         margin-bottom: 20px;
         border-radius: 5px;
         border: 1px solid black;
         padding: 2px 8px;
         font-size: 18px;
+        display: block;
       }
       textarea.init-rhyme-box {
+        display: block;
         height: 400px;
         width: 300px;
+        margin: 0 auto;
         margin-bottom: 20px;
         border-radius: 5px
       }
