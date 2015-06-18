@@ -4,6 +4,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
   var saveToCookies = function saveToCookies() {
     $cookies.put('anonRhymeTitle', $scope.rhyme.title);
     $cookies.put('anonRhymedText', $scope.rhyme.rhymedText);
+    $cookies.put('anonSyllables', $scope.rhyme.syllables);
   };
 
   var alterText = function alterText() {
@@ -50,7 +51,8 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
   var fetchAnonRhyme = function() {
     $scope.rhyme = {title: $cookies.get('anonRhymeTitle'),
             originalText: $cookies.get('anonOriginalText'),
-              rhymedText: $cookies.get('anonRhymedText')};
+              rhymedText: $cookies.get('anonRhymedText'),
+              syllables: $cookies.get('anonSyllables')};
   };
 
   var fetchRhymes = function() {
@@ -79,7 +81,19 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
 
   $scope.$watch('rhyme.rhymedText',
     function(newWord){
-      $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, [5, 3]);
+      var sylls = _.map($scope.rhyme.syllables.split(", "), function(n){
+        return parseInt(n);
+      });
+      $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, sylls);
+    }
+  );
+
+  $scope.$watch('rhyme.syllables',
+    function(newWord){
+      var sylls = _.map($scope.rhyme.syllables.split(", "), function(n){
+        return parseInt(n);
+      });
+      $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, sylls);
     }
   );
 
