@@ -1,23 +1,26 @@
 #ninja-init-form {
   form {
-    text-align: center;
-    margin: 50px auto;
-    width: 445px;
-    input.title-box {
-      width: 300px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid black;
-      padding: 2px 8px;
-      font-size: 18px;
-    }
-    textarea.init-rhyme-box {
-      height: 400px;
-      width: 300px;
-      margin-bottom: 20px;
-      border-radius: 5px
+    margin-top: 70px;
+    .main-inputs {
+      text-align: center;
+      input.title-box {
+        width: 300px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+        border: 1px solid black;
+        padding: 2px 8px;
+        font-size: 18px;
+      }
+      textarea.init-rhyme-box {
+        height: 400px;
+        width: 300px;
+        margin-bottom: 20px;
+        border-radius: 5px
+      }
     }
     button.init-ninja-button {
+      margin: 0 auto;
+      display: block;
       width: 200px;
       font-size: 25px;
       background-color: #414a4c;

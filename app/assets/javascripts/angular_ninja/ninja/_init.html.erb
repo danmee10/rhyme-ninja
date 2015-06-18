@@ -1,22 +1,40 @@
 <div id="ninja-init-form" class="container">
-  <div class="row">
-    <form ng-submit="initNinja()">
-      <input ng-model="rhyme.title"
-                 type='text'
-          placeholder="Title"
-                class="title-box">
-      <textarea ng-model="rhyme.originalText"
-             placeholder="Enter text..."
-                   class="init-rhyme-box">
-      </textarea>
-      <br>
-      <button type="submit"
-             class="btn init-ninja-button"
-        ng-disable="rhyme.originalText.length > 0">
-        Enter the Ninja!
-      </button>
+
+    <form ng-submit="initNinja()" class="row">
+      <div class="main-inputs col-md-4 col-md-offset-4">
+        <input ng-model="rhyme.title"
+                   type='text'
+            placeholder="Title"
+                  class="title-box">
+        <textarea ng-model="rhyme.originalText"
+               placeholder="Enter text..."
+                     class="init-rhyme-box">
+        </textarea>
+      </div>
+
+      <div class="option-inputs col-md-2">
+        <label>
+          Syllable Pattern
+          <input type='text'>
+        </label>
+        <div class="onoffswitch">
+          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
+          <label class="onoffswitch-label" for="myonoffswitch">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="col-md-12">
+        <button type="submit"
+               class="btn init-ninja-button"
+          ng-disable="rhyme.originalText.length > 0">
+          Enter the Ninja!
+        </button>
+      </div>
     </form>
-  </div>
+
   <div class="row" ng-show="anonUser">
     <faq page-name="initNinja"></faq>
   </div>
