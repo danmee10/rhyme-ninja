@@ -1,9 +1,10 @@
-app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$cookies', function ($scope, Rhyme, $location, rhyme, $cookies){
+app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', '$cookies', function ($scope, Rhyme, $location, $cookies){
   'use strict';
 
   $scope.rhyme = {
     title: '',
-    originalText: ''
+    originalText: '',
+    visibility: 'public_rhyme'
   }
 
   $scope.initNinja = function() {
@@ -25,7 +26,6 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$cook
                   title: $scope.rhyme.title,
           original_text: $scope.rhyme.originalText,
      authenticity_token: token}, function(r){
-        $.extend(rhyme, r);
         $location.path('/ninja/' + r.id);
     });
   };
@@ -34,6 +34,8 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', 'rhyme', '$cook
     $cookies.put('anonRhymeTitle', $scope.rhyme.title);
     $cookies.put('anonOriginalText', $scope.rhyme.originalText);
     $cookies.put('anonRhymedText', $scope.rhyme.originalText);
+    $cookies.put('anonSyllables', $scope.rhyme.syllables);
+    $cookies.put('anonVisibility', $scope.rhyme.visibility);
     $location.path('/ninja/');
   };
 }]);

@@ -30,6 +30,8 @@ class SessionsController < ApplicationController
     cookies.delete(:anonRhymeTitle)
     cookies.delete(:anonOriginalText)
     cookies.delete(:anonRhymedText)
+    cookies.delete(:anonSyllables)
+    cookies.delete(:anonPublic)
   end
 
   def temp_rhyme_present?
