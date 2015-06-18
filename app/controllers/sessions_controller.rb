@@ -23,10 +23,13 @@ class SessionsController < ApplicationController
   private
 
   def add_temp_rhyme
+    title = cookies[:anonRhymeTitle].empty? ? 'Untitled' : cookies[:anonRhymeTitle]
     Rhyme.create!(user: current_user,
            rhymed_text: cookies[:anonRhymedText],
          original_text: cookies[:anonOriginalText],
-                 title: cookies[:anonRhymeTitle])
+      syllable_pattern: cookies[:anonSyllables],
+            visibility: 1,
+                 title: title)
     cookies.delete(:anonRhymeTitle)
     cookies.delete(:anonOriginalText)
     cookies.delete(:anonRhymedText)

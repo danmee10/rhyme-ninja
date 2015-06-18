@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150613223055) do
+ActiveRecord::Schema.define(version: 20150618222046) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -43,10 +43,11 @@ ActiveRecord::Schema.define(version: 20150613223055) do
     t.string   "title"
     t.text     "original_text"
     t.text     "rhymed_text"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
-    t.integer  "visibility",    default: 0
+    t.integer  "visibility",       default: 0
+    t.string   "syllable_pattern", default: "5"
   end
 
   add_index "rhymes", ["user_id"], name: "index_rhymes_on_user_id", using: :btree
