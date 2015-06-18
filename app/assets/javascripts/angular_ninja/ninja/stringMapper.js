@@ -6,6 +6,10 @@ app.factory('stringMapper', [function(){
   sm.mapString = function(string) {
     var arr = string.split(/(\W)/);
 
+    _.remove(arr, function(w){
+      return w === '';
+    });
+
     var wOA = _.map(arr, function(word, index, coll){
       if (index === 0) {
         var startIndex = 0;

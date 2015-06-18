@@ -6,8 +6,13 @@ app.factory('metreMachine', ['syllableCounter', 'stringMapper', function(syllabl
   var buildLine = function(subWordArr, lineSyls) {
     var lineSylCount = -1;
     var line = _.takeWhile(subWordArr, function(wordObj) {
-      lineSylCount += syllableCounter.bestGuess(wordObj.word);
-      return lineSylCount < lineSyls;
+      var bg = syllableCounter.bestGuess(wordObj.word);
+      lineSylCount += bg;
+      if ((bg - 1) === lineSylCount && bg >= lineSyls) {
+        return true;
+      } else {
+        return lineSylCount < lineSyls;
+      }
     });
     return line;
   };
@@ -34,3 +39,4 @@ app.factory('metreMachine', ['syllableCounter', 'stringMapper', function(syllabl
 
   return mm;
 }]);
+
