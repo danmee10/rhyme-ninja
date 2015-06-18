@@ -15,15 +15,17 @@
       <div class="option-inputs col-md-2 col-sm-12">
         <label>
           Syllable Pattern
-          <input type='text'>
+          <input type='text' ng-model="rhyme.syllables">
         </label>
-        <div class="onoffswitch">
-          <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" checked>
-          <label class="onoffswitch-label" for="myonoffswitch">
-            <span class="onoffswitch-inner"></span>
-            <span class="onoffswitch-switch"></span>
-          </label>
+
+        <div class="switch switch-blue">
+          <input type="radio" class="switch-input" name="visibility" value="public_rhyme" id="public_rhyme" checked ng-model="rhyme.visibility">
+          <label for="public_rhyme" class="switch-label switch-label-off">PUBLIC</label>
+          <input type="radio" class="switch-input" name="visibility" value="private_rhyme" id="private_rhyme" ng-model="rhyme.visibility">
+          <label for="private_rhyme" class="switch-label switch-label-on">PRIVATE</label>
+          <span class="switch-selection"></span>
         </div>
+
       </div>
 
       <div class="col-md-12">
