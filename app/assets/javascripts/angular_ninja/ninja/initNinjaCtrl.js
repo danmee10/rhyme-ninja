@@ -35,7 +35,6 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', '$cookies', fun
     $cookies.put('anonOriginalText', $scope.rhyme.originalText);
     $cookies.put('anonRhymedText', $scope.rhyme.originalText);
     $cookies.put('anonSyllables', $scope.rhyme.syllables);
-    $cookies.put('anonVisibility', $scope.rhyme.visibility);
     $location.path('/ninja/');
   };
 }]);

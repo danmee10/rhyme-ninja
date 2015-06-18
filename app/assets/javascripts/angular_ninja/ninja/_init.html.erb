@@ -18,7 +18,7 @@
           <input type='text' ng-model="rhyme.syllables">
         </label>
 
-        <div class="switch switch-blue">
+        <div class="switch switch-blue" ng-hide="anonUser">
           <input type="radio" class="switch-input" name="visibility" value="public_rhyme" id="public_rhyme" checked ng-model="rhyme.visibility">
           <label for="public_rhyme" class="switch-label switch-label-off">PUBLIC</label>
           <input type="radio" class="switch-input" name="visibility" value="private_rhyme" id="private_rhyme" ng-model="rhyme.visibility">
