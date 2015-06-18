@@ -16,12 +16,29 @@
         <div rnja-compile="toolTriggers"></div>
 
       </div>
+      <div class="rhyme-option-inputs">
+        <label>
+          Syllable Pattern
+          <input type='text' ng-model="rhyme.syllables" pattern="[\d+,\s]+|\d+">
+        </label>
+
+        <div class="switch switch-blue" ng-hide="anonUser">
+          <input type="radio" class="switch-input" name="visibility" value="public_rhyme" id="public_rhyme" checked ng-model="rhyme.visibility">
+          <label for="public_rhyme" class="switch-label switch-label-off">PUBLIC</label>
+          <input type="radio" class="switch-input" name="visibility" value="private_rhyme" id="private_rhyme" ng-model="rhyme.visibility">
+          <label for="private_rhyme" class="switch-label switch-label-on">PRIVATE</label>
+          <span class="switch-selection"></span>
+        </div>
+
+      </div>
+
+
       <button class="btn btn-default save-rhyme" ng-click="rhymeFields.submitMethod()">
         {{rhymeFields.submitText}}
       </button>
     </div>
   </div>
-  <div class="row" ng-show="anonUser">
+  <div class="row bottom-buffer-50" ng-show="anonUser">
     <button ng-click="redirectToCreateAccount()" class="btn btn-default create-account-button">
       Create Account To Permanently Save Work!
     </button>
