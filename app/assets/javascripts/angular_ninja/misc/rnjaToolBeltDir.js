@@ -10,6 +10,10 @@ app.directive('rnjaToolBelt',['$http', function($http) {
       $scope.selectedTool = null;
       $scope.tempContent = '';
 
+      $scope.$watch('content.word', function(){
+        $scope.nonWordSelected = /\W/.test($scope.content.word);
+      });
+
 
       $scope.hideTools = function() {
         $scope.showTools = false;
@@ -43,6 +47,7 @@ app.directive('rnjaToolBelt',['$http', function($http) {
       $scope.resetSelectedTool = function() {
         $scope.selectedTool = null;
       };
+
       $scope.$on('resetNinjaTools', function(){
         $scope.resetSelectedTool();
         $scope.rhymes = [];

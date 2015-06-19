@@ -111,10 +111,6 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
     $scope.showTools = true;
   };
 
-  $scope.nonWordClick = function(wordObj) {
-    console.log("nonWordClick")
-  };
-
   var setSelectedWord = function(wordObj) {
     $scope.selectedWord = {
       word: wordObj.word,

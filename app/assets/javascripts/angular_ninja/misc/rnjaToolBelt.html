@@ -6,7 +6,7 @@
   </div>
 
   <div class="tool-selectors" ng-show="isSelected(null)">
-    <button class="btn btn-default" ng-click="selectTool('rhymes')">
+    <button ng-hide="nonWordSelected" class="btn btn-default" ng-click="selectTool('rhymes')">
       Rhymes
     </button>
     <button ng-hide="true" class="btn btn-default" ng-click="selectTool('synonyms')">

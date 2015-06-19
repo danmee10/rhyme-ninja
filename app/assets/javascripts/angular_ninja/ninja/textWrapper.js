@@ -10,13 +10,8 @@ app.factory('textWrapper', ['metreMachine', function(metreMachine){
 
     var wrappedLines = _.map(lineArrs, function(lineArr){
       var wrappedLine = _.map(lineArr, function(el) {
-        if (/\W/.test(el.word)) {
-          var clickFunction = "nonWordClick(" + JSON.stringify(el) + ")";
-          var itemClass = "non-word";
-        } else {
-          var clickFunction = "wordClick(" + JSON.stringify(el) + ")";
-          var itemClass = "word";
-        }
+        var clickFunction = "wordClick(" + JSON.stringify(el) + ")";
+        var itemClass = "word";
 
         return "<span ng-click='" + clickFunction + "' class='rhyme-item " + itemClass + "'>" + el.word + "</span>";
       });
