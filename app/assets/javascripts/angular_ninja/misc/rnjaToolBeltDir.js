@@ -67,7 +67,13 @@ app.directive('rnjaToolBelt',['$http', function($http) {
       };
 
       var fetchSynonyms = function() {
-
+        var url = "/api/synonyms/" + $scope.content.word + ".json"
+        $http.get(url).success(function(data){
+          var spellings = _.map(data, function(d){ return d.spelling; });
+          $scope.synonyms = _.uniq(spellings);
+        }).error(function(msg){
+          $scope.synonyms = ["Please contact support."];
+        });
       }
 
       var fetchRhymes = function() {

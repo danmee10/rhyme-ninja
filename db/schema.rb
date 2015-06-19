@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618222046) do
+ActiveRecord::Schema.define(version: 20150619011647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(version: 20150618222046) do
 
   add_index "rhymes", ["user_id"], name: "index_rhymes_on_user_id", using: :btree
 
+  create_table "synonym_relations", force: :cascade do |t|
+    t.integer  "word_id"
+    t.integer  "word_synonym_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
@@ -60,8 +67,10 @@ ActiveRecord::Schema.define(version: 20150618222046) do
 
   create_table "words", force: :cascade do |t|
     t.string   "spelling"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "searched_rhymes", default: false
+    t.boolean  "searched_syns",   default: false
   end
 
 end

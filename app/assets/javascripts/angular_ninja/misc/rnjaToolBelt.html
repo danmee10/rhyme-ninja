@@ -9,7 +9,7 @@
     <button class="btn btn-default" ng-click="selectTool('rhymes')">
       Rhymes
     </button>
-    <button ng-show="false" class="btn btn-default" ng-click="selectTool('synonyms')">
+    <button ng-hide="true" class="btn btn-default" ng-click="selectTool('synonyms')">
       Synonyms
     </button>
     <button class="btn btn-default" ng-click="selectTool('manual')">
@@ -17,7 +17,7 @@
     </button>
   </div>
 
-  <div class="rhyme-matches" ng-show="isSelected('rhymes')">
+  <div class="word-matches" ng-show="isSelected('rhymes')">
     <div>
       <ul>
         <li ng-repeat="rhyme in rhymes" class="word-choice" ng-click="changeWord(rhyme)">{{rhyme}}</li>
@@ -27,7 +27,11 @@
 
 
   <div class="synonyms" ng-show="isSelected('synonyms')">
-    synonyms
+    <div>
+      <ul>
+        <li ng-repeat="synonym in synonyms" class="word-choice" ng-click="changeWord(synonym)">{{synonym}}</li>
+      </ul>
+    </div>
   </div>
 
 

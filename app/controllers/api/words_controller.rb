@@ -7,6 +7,8 @@ class Api::WordsController < Api::BaseController
   end
 
   def synonyms
-    Rails.logger.debug("danmee synonyms --> #{params.inspect}")
+    word = Word.find_or_create_by(spelling: params[:word].downcase)
+    @word_synonyms = word.synonyms
+    respond_with(@word_synonyms)
   end
 end
