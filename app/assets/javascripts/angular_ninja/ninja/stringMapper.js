@@ -20,6 +20,10 @@ app.factory('stringMapper', [function(){
       }
 
       var position = [startIndex, endIndex];
+
+      if (/\'|\"/.test(word)){
+        word = "\""
+      }
       return {word: word, position: position};
     });
 
