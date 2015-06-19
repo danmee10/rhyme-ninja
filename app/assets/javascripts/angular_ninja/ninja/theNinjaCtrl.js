@@ -111,6 +111,10 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
     $scope.showTools = true;
   };
 
+  $scope.isSelectedWord = function(position) {
+    return (position[0] === $scope.selectedWord.position[0] && position[1] === $scope.selectedWord.position[1]);
+  };
+
   var setSelectedWord = function(wordObj) {
     $scope.selectedWord = {
       word: wordObj.word,

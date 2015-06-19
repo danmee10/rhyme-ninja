@@ -18,6 +18,7 @@ app.directive('rnjaToolBelt',['$http', function($http) {
       $scope.hideTools = function() {
         $scope.showTools = false;
         $scope.selectedTool = null;
+        $scope.content = {word:'$@--@inItIaLiZeR@--@%', position:[]};
         $scope.rhymes = null;
       };
 

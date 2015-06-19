@@ -11,9 +11,14 @@ app.factory('textWrapper', ['metreMachine', function(metreMachine){
     var wrappedLines = _.map(lineArrs, function(lineArr){
       var wrappedLine = _.map(lineArr, function(el) {
         var clickFunction = "wordClick(" + JSON.stringify(el) + ")";
-        var itemClass = "word";
+        if (/\W/.test(el.word)) {
+          var itemClass = "non-word";
+        } else {
+          var itemClass = "word";
+        }
 
-        return "<span ng-click='" + clickFunction + "' class='rhyme-item " + itemClass + "'>" + el.word + "</span>";
+        var pos = JSON.stringify(el.position)
+        return "<span ng-click='" + clickFunction + "' ng-class=\"{'selected-word': isSelectedWord(" + pos + ")}\" class='rhyme-item " + itemClass + "'>" + el.word + "</span>";
       });
 
       return "<div class='rhyme-line'>" + wrappedLine.join("") + "</div>";
