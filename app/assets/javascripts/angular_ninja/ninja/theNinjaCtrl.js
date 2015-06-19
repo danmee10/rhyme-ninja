@@ -13,6 +13,8 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
                         id: alteredRhyme.id,
                      title: alteredRhyme.title,
                rhymed_text: alteredRhyme.rhymed_text,
+          syllable_pattern: alteredRhyme.syllable_pattern,
+                visibility: alteredRhyme.visibility,
         authenticity_token: token
     });
   };
