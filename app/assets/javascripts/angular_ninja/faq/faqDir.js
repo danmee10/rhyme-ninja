@@ -34,12 +34,8 @@ app.directive('faq', function() {
       var ninjaFAQs = function() {
         $scope.faqs = [
           {
-            question: "What is the point of this?",
-            answer: "This is the core of RhymeNinja.  It allows you to take the block of text on the left and turn it into a rhyme on the right."
-          },
-          {
-            question: "Why wouldn't I just use like...any word processor...or a piece of paper?",
-            answer: "Currently, RhymeNinja offers no advantages over these methods.  In the future, a suite of tools will be added that will make rhyming a breeze!"
+            question: "Now what?",
+            answer: "Now it is up to you to transform the text on the right into a rhyme.  Start by clicking on any word to bring up the menu.  From there you will be able to replace the word you clicked on with a word that rhymes, a synonym, or any other word or words you can think of by changing it manually."
           },
           {
             question: "What does 'Temporary Save' mean?",
@@ -53,6 +49,14 @@ app.directive('faq', function() {
           {
             question: "What do I do?!",
             answer: "Type or paste a block of text above and then Enter the Ninja to transform it into a Rhyme!"
+          },
+          {
+            question: "What is a 'Syllable Pattern'?",
+            answer: "It defines how many syllables will be allowed per line.  The default is 10, so each line will start out with no more than 10 syllables, unless the line starts with a word with more than 10 syllables.  In that case it will have as many as the starting word."
+          },
+          {
+            question: "What is the 'requested format' for the syllable pattern?",
+            answer: "You can specify as many numbers as you like separated by a comma and a space.  The Ninja will apply each number in turn to each line until there are either no more lines or numbers.  If there are more lines than numbers the number-pattern will repeat."
           }
         ]
       };
