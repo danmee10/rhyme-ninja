@@ -6,7 +6,7 @@
                    type='text'
             placeholder="Title"
                   class="title-box">
-        <textarea ng-model="rhyme.originalText"
+        <textarea ng-model="rhyme.original_text"
                placeholder="Enter text..."
                      class="init-rhyme-box"
                      required>
@@ -16,7 +16,7 @@
       <div class="rhyme-option-inputs col-md-2 col-sm-12">
         <label>
           Syllable Pattern
-          <input type='text' ng-model="rhyme.syllables" pattern="[\d+,\s]+|\d+" required>
+          <input type='text' ng-model="rhyme.syllable_pattern" pattern="[\d+,\s]+|\d+" required>
         </label>
 
         <div class="switch switch-blue" ng-hide="anonUser">

@@ -3,7 +3,7 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', '$cookies', fun
 
   $scope.rhyme = {
     title: '',
-    originalText: '',
+    original_text: '',
     visibility: 'public_rhyme'
   }
 
@@ -24,7 +24,7 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', '$cookies', fun
   var saveRhymeForUser = function(){
     Rhyme.save({user_id: userId,
                   title: $scope.rhyme.title,
-          original_text: $scope.rhyme.originalText,
+          original_text: $scope.rhyme.original_text,
      authenticity_token: token}, function(r){
         $location.path('/ninja/' + r.id);
     });
@@ -32,9 +32,9 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', '$cookies', fun
 
   var saveRhymeForAnon = function() {
     $cookies.put('anonRhymeTitle', $scope.rhyme.title);
-    $cookies.put('anonOriginalText', $scope.rhyme.originalText);
-    $cookies.put('anonRhymedText', $scope.rhyme.originalText);
-    $cookies.put('anonSyllables', $scope.rhyme.syllables);
+    $cookies.put('anonOriginalText', $scope.rhyme.original_text);
+    $cookies.put('anonRhymedText', $scope.rhyme.original_text);
+    $cookies.put('anonSyllables', $scope.rhyme.syllable_pattern);
     $location.path('/ninja/');
   };
 }]);
