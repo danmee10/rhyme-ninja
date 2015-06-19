@@ -3,8 +3,8 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
 
   var saveToCookies = function saveToCookies() {
     $cookies.put('anonRhymeTitle', $scope.rhyme.title);
-    $cookies.put('anonRhymedText', $scope.rhyme.rhymedText);
-    $cookies.put('anonSyllables', $scope.rhyme.syllables);
+    $cookies.put('anonRhymedText', $scope.rhyme.rhymed_text);
+    $cookies.put('anonSyllables', $scope.rhyme.syllable_pattern);
   };
 
   var alterText = function alterText() {
@@ -12,7 +12,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
     Rhyme.update({ user_id: alteredRhyme.user_id,
                         id: alteredRhyme.id,
                      title: alteredRhyme.title,
-               rhymed_text: alteredRhyme.rhymedText,
+               rhymed_text: alteredRhyme.rhymed_text,
         authenticity_token: token
     });
   };
@@ -50,9 +50,9 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
 
   var fetchAnonRhyme = function() {
     $scope.rhyme = {title: $cookies.get('anonRhymeTitle'),
-            originalText: $cookies.get('anonOriginalText'),
-              rhymedText: $cookies.get('anonRhymedText'),
-              syllables: $cookies.get('anonSyllables')};
+            original_text: $cookies.get('anonOriginalText'),
+              rhymed_text: $cookies.get('anonRhymedText'),
+         syllable_pattern: $cookies.get('anonSyllables')};
   };
 
   var fetchRhymes = function() {
@@ -70,30 +70,34 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
       if (newWord === "$@--@inItIaLiZeR@--@%") {return;}
       var sInd = $scope.selectedWord.position[0];
       var eInd = $scope.selectedWord.position[1] + 1;
-      var end = $scope.rhyme.rhymedText.length;
+      var end = $scope.rhyme.rhymed_text.length;
 
-      var pre = $scope.rhyme.rhymedText.slice(0, sInd);
-      var post = $scope.rhyme.rhymedText.slice(eInd, end);
+      var pre = $scope.rhyme.rhymed_text.slice(0, sInd);
+      var post = $scope.rhyme.rhymed_text.slice(eInd, end);
 
-      $scope.rhyme.rhymedText = (pre + newWord + post);
+      $scope.rhyme.rhymed_text = (pre + newWord + post);
     }
   );
 
-  $scope.$watch('rhyme.rhymedText',
+  $scope.$watch('rhyme.rhymed_text',
     function(newWord){
-      var sylls = _.map($scope.rhyme.syllables.split(", "), function(n){
-        return parseInt(n);
-      });
-      $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, sylls);
+      if (!_.isUndefined($scope.rhyme)) {
+        var sylls = _.map($scope.rhyme.syllable_pattern.split(", "), function(n){
+          return parseInt(n);
+        });
+        $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymed_text, sylls);
+      }
     }
   );
 
-  $scope.$watch('rhyme.syllables',
+  $scope.$watch('rhyme.syllable_pattern',
     function(newWord){
-      var sylls = _.map($scope.rhyme.syllables.split(", "), function(n){
-        return parseInt(n);
-      });
-      $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymedText, sylls);
+      if (!_.isUndefined($scope.rhyme)) {
+        var sylls = _.map($scope.rhyme.syllable_pattern.split(", "), function(n){
+          return parseInt(n);
+        });
+        $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymed_text, sylls);
+      }
     }
   );
 

@@ -23,7 +23,7 @@ describe('Controller: ninja/initNinjaCtrl', function(){
       $controller('initNinjaCtrl', { $scope: $scope });
 
       expect($scope.rhyme.title).toEqual('');
-      expect($scope.rhyme.originalText).toEqual('');
+      expect($scope.rhyme.original_text).toEqual('');
     });
   });
 
@@ -36,9 +36,9 @@ describe('Controller: ninja/initNinjaCtrl', function(){
       $controller('initNinjaCtrl', { $scope: $scope, $cookies: $cookies });
 
       expect($cookies.get('anonOriginalText')).not.toBeDefined();
-      $scope.rhyme.originalText = "This is some originalText";
+      $scope.rhyme.original_text = "This is some original_text";
       $scope.initNinja();
-      expect($cookies.get('anonOriginalText')).toEqual("This is some originalText");
+      expect($cookies.get('anonOriginalText')).toEqual("This is some original_text");
       $cookies.remove('anonOriginalText');
     }));
 

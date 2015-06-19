@@ -15,7 +15,7 @@ describe('Controller: ninja/theNinjaCtrl', function(){
     mockToolBelt = {
       wrapText: function(a, b){ return; }
     }
-    $scope.rhyme = {rhymedText: ""};
+    $scope.rhyme = {rhymed_text: ""};
   });
 
   var setPageVars = function(uid, token, anonUser) {
@@ -63,7 +63,7 @@ describe('Controller: ninja/theNinjaCtrl', function(){
       $cookies.remove('anonRhymedText');
       setPageVars(null, null, true);
       var mockRhyme = {
-        originalText: "",
+        original_text: "",
         title: ""
       }
       $cookies.put('anonRhymeTitle', 'this is title');
@@ -72,8 +72,8 @@ describe('Controller: ninja/theNinjaCtrl', function(){
       $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope, rhyme: mockRhyme, $cookies: $cookies });
 
       expect($scope.rhyme.title).toEqual("this is title");
-      expect($scope.rhyme.originalText).toEqual("this is original");
-      expect($scope.rhyme.rhymedText).toEqual("this is rhymed");
+      expect($scope.rhyme.original_text).toEqual("this is original");
+      expect($scope.rhyme.rhymed_text).toEqual("this is rhymed");
 
       $cookies.remove('anonRhymeTitle');
       $cookies.remove('anonOriginalText');
@@ -82,7 +82,7 @@ describe('Controller: ninja/theNinjaCtrl', function(){
     it('is the rhyme with the id equal to the rhyme_id stateParam if that rhyme belongs to the user', function(){
       setPageVars(1, null, false);
       var mockRhyme = {
-        originalText: "",
+        original_text: "",
         title: ""
       }
       var mockUserApi = {
