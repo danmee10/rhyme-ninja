@@ -27,16 +27,11 @@ class Word < ActiveRecord::Base
 
 private
   def fetch_synonyms
-    results = Faraday.get "http://words.bighugelabs.com/api/2/#{ENV['THESAURUS_KEY']}/#{spelling}/json"
-    if results.status == 200
+    response = Thesaurus.fetch_data(spelling)
+    if response
       update!(searched_syns: true)
-      data = JSON.parse(results.body)
 
-      parts_of_speech = data.keys
-
-      syns_and_sims = parts_of_speech.map{|pos| (data[pos]['syn'] || []) + (data[pos]['sim'] || [])}.flatten
-
-      syns_and_sims.each do |d|
+      response.each do |d|
         w = Word.find_or_create_by(spelling: d)
         SynonymRelation.find_or_create_by(word_synonym_id: w.id, word_id: self.id)
       end

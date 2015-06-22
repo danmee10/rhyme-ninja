@@ -56,7 +56,7 @@ app.directive('faq', function() {
           },
           {
             question: "What is the 'requested format' for the syllable pattern?",
-            answer: "You can specify as many numbers as you like separated by a comma and a space.  The Ninja will apply each number in turn to each line until there are either no more lines or numbers.  If there are more lines than numbers the number-pattern will repeat."
+            answer: "You can specify as many numbers as you like separated by a comma and a space.  The Ninja will apply each number in turn to each line until there are either no more lines or no more numbers.  If there are more lines than numbers the number-pattern will repeat."
           }
         ]
       };
