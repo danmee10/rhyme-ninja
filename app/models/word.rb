@@ -32,7 +32,7 @@ private
       update!(searched_syns: true)
 
       response.each do |d|
-        w = Word.find_or_create_by(spelling: d)
+        w = Word.find_or_create_by(spelling: d.downcase)
         SynonymRelation.find_or_create_by(word_synonym_id: w.id, word_id: self.id)
       end
 
@@ -49,7 +49,7 @@ private
       data = JSON.parse(results.body)
 
       data.uniq.each do |d|
-        w = Word.find_or_create_by(spelling: d['word'])
+        w = Word.find_or_create_by(spelling: d['word'].downcase)
         Rhymelation.find_or_create_by(word_rhyme_id: w.id, word_id: self.id)
       end
 
