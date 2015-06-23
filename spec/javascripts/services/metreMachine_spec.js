@@ -41,7 +41,7 @@ describe('Factory: metreMachine', function() {
 
     it('uses each syllable count in the second arg for a line in order and then repeats if more words remain', inject(function(syllableCounter) {
       var input = "this is more input so that we can ensure that the breakDown function is respecting the syllable arg";
-      var syllPattern = [3, 2, 1, 4];
+      var syllPattern = [3, 2, 3, 4];
       var output = metreMachine.breakDown(input, syllPattern);
 
       var index = 0;
@@ -59,7 +59,7 @@ describe('Factory: metreMachine', function() {
         }
       });
 
-      expect(output.length).toEqual(14);
+      expect(output.length).toEqual(10);
     }));
 
   });
