@@ -18,11 +18,14 @@ describe('Factory: syllableCounter', function() {
       expect(output).toEqual(3);
     });
 
-    it('treats non-word characters as though they have zero syllables', function() {
-      var input = "-";
-      var output = syllableCounter.bestGuess(input);
+    it('treats non-word and characters as though they have zero syllables', function() {
+      var inputOne = "-";
+      var inputTwo = "2";
+      var outputOne = syllableCounter.bestGuess(inputOne);
+      var outputTwo = syllableCounter.bestGuess(inputTwo);
 
-      expect(output).toEqual(0);
+      expect(outputOne).toEqual(0);
+      expect(outputTwo).toEqual(0);
     });
   });
 
