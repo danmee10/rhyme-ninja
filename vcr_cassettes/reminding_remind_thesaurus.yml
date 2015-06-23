@@ -1,0 +1,89 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://words.bighugelabs.com/api/2/83393944ecde3a62a2dccd8cc9b081cf/reminding/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 303
+      message: 
+    headers:
+      server:
+      - nginx/1.4.6 (Ubuntu)
+      date:
+      - Tue, 23 Jun 2015 20:08:03 GMT
+      content-type:
+      - text/html
+      content-length:
+      - '0'
+      connection:
+      - close
+      x-powered-by:
+      - PHP/5.5.9-1ubuntu4.9
+      set-cookie:
+      - PHPSESSID=v1s9npjtugokpohhsrs4n08nc1; path=/; domain=words.bighugelabs.com
+      expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      cache-control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      pragma:
+      - no-cache
+      location:
+      - http://words.bighugelabs.com/api/2/83393944ecde3a62a2dccd8cc9b081cf/remind/json
+      access-control-allow-origin:
+      - "*"
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Tue, 23 Jun 2015 20:08:03 GMT
+- request:
+    method: get
+    uri: http://words.bighugelabs.com/api/2/83393944ecde3a62a2dccd8cc9b081cf/remind/json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.8.9
+  response:
+    status:
+      code: 200
+      message: 
+    headers:
+      server:
+      - nginx/1.4.6 (Ubuntu)
+      date:
+      - Tue, 23 Jun 2015 20:08:03 GMT
+      content-type:
+      - text/javascript
+      transfer-encoding:
+      - chunked
+      connection:
+      - close
+      vary:
+      - Accept-Encoding
+      x-powered-by:
+      - PHP/5.5.9-1ubuntu4.9
+      set-cookie:
+      - PHPSESSID=fmtmjv0kqebf511dohi4smo1g2; path=/; domain=words.bighugelabs.com
+      expires:
+      - Thu, 19 Nov 1981 08:52:00 GMT
+      cache-control:
+      - no-store, no-cache, must-revalidate, post-check=0, pre-check=0
+      pragma:
+      - no-cache
+      access-control-allow-origin:
+      - "*"
+    body:
+      encoding: ASCII-8BIT
+      string: '{"verb":{"syn":["prompt","cue","inform"]}}'
+    http_version: 
+  recorded_at: Tue, 23 Jun 2015 20:08:03 GMT
+recorded_with: VCR 2.9.3
