@@ -16,8 +16,8 @@ app.controller('initNinjaCtrl', ['$scope', 'Rhyme', '$location', '$cookies', fun
     }
   };
 
+  $scope.anonUser = anonUser;
   if (anonUser) {
-    $scope.anonUser = true;
     $('.title-box').attr("maxlength", '50');
     $('.init-rhyme-box').attr("maxlength", '700');
   }
