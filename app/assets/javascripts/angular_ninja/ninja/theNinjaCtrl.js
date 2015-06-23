@@ -19,18 +19,17 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
     });
   };
 
+  $scope.anonUser = anonUser;
   if (anonUser) {
     $scope.rhymeFields = {
       submitText: "Temporary Save",
       submitMethod: saveToCookies
     }
-    $scope.anonUser = true;
   } else {
     $scope.rhymeFields = {
       submitText: "Save",
       submitMethod: alterText
     }
-    $scope.anonUser = false;
   }
 
   var rhymeById = function(id) {
