@@ -62,6 +62,15 @@ describe('Factory: metreMachine', function() {
       expect(output.length).toEqual(10);
     }));
 
+    it('adds a word with more syllables than a line should hold if it is the next available word', inject(function(syllableCounter) {
+      var input = "one perfect";
+      var output = metreMachine.breakDown(input, [1]);
+
+      expect(output[0].length).toEqual(2)
+      expect(output[1].length).toEqual(1)
+      expect(output.length).toEqual(2)
+    }));
+
   });
 
 });
