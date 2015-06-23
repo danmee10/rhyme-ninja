@@ -40,6 +40,10 @@ app.directive('faq', function() {
           {
             question: "What does 'Temporary Save' mean?",
             answer: "Temporary Save will store any changes you make in your browser's cookies, and will make that rhyme available to your new account should you make one while they are stored."
+          },
+          {
+            question: "No rhymes or synonyms...just 'Contact support'...",
+            answer: "Chances are this app has hit the rate limit for either the rhyme or thesaurus API.  Send danmee10@gmail.com an email titled 'RhymeNinja bug' and give the time of day the incident occurred."
           }
         ]
       };
