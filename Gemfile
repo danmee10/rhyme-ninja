@@ -32,7 +32,7 @@ gem 'omniauth-facebook'
 # misc
 gem 'awesome_print'
 gem 'responders'
-gem 'faraday'
+gem 'faraday', "~> 0.8.9"
 group :production do
   gem 'rails_log_stdout',           github: 'heroku/rails_log_stdout'
   gem 'rails3_serve_static_assets', github: 'heroku/rails3_serve_static_assets'
@@ -41,6 +41,7 @@ end
 
 group :development, :test do
   gem 'jasmine'
+  gem 'vcr'
   gem 'byebug'
   gem 'web-console', '~> 2.0'
   gem 'spring', '~> 1.3.4'
