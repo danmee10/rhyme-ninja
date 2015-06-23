@@ -2,25 +2,25 @@ class Thesaurus
   attr_accessor :data, :matches
 
   def self.fetch_data(word)
-    data = Faraday.get "http://words.bighugelabs.com/api/2/#{ENV['THESAURUS_KEY']}/#{word}/json"
+    @data = Faraday.get "http://words.bighugelabs.com/api/2/#{ENV['THESAURUS_KEY']}/#{word}/json"
     handle_errors
-    matches
+    @matches
   end
 
 private
   def self.handle_errors
-    case data.status
+    case @data.status
       when 200 then parse_data
-      when 404 then matches = []
+      when 404 then @matches = []
       when 303 then fetch_related_word
-      when 500 then matches = false
+      when 500 then @matches = false
     end
   end
 
   def self.parse_data
-    body = JSON.parse(data.body)
+    body = JSON.parse(@data.body)
     parts_of_speech = body.keys
-    matches = parts_of_speech.map do |pos|
+    @matches = parts_of_speech.map do |pos|
       (body[pos]['syn'] || []) + (body[pos]['sim'] || [])
     end.flatten
   end
@@ -31,6 +31,6 @@ private
   end
 
   def self.parse_location
-    data.headers['location'].scan(/\/[a-z]+\/json$/).first[1..-6]
+    @data.headers['location'].scan(/\/[a-z]+\/json$/).first[1..-6]
   end
 end
