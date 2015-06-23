@@ -2,14 +2,14 @@
   <div class="rnja-header">
     <span class="close-button glyphicon glyphicon-remove-circle" ng-click="hideTools()"></span>
     <span class="back-button glyphicon glyphicon-chevron-left" ng-click="resetSelectedTool()" ng-show="!isSelected(null)"></span>
-    <h4 class="tools-title">{{content.word}}</h4>
+    <h4 class="tools-title">{{content.word | rnjaTitleizeSpace }}</h4>
   </div>
 
   <div class="tool-selectors" ng-show="isSelected(null)">
     <button ng-hide="nonWordSelected" class="btn btn-default" ng-click="selectTool('rhymes')">
       Rhymes
     </button>
-    <button ng-hide="true" class="btn btn-default" ng-click="selectTool('synonyms')">
+    <button ng-hide="nonWordSelected" class="btn btn-default" ng-click="selectTool('synonyms')">
       Synonyms
     </button>
     <button class="btn btn-default" ng-click="selectTool('manual')">
@@ -26,7 +26,7 @@
   </div>
 
 
-  <div class="synonyms" ng-show="isSelected('synonyms')">
+  <div class="word-matches" ng-show="isSelected('synonyms')">
     <div>
       <ul>
         <li ng-repeat="synonym in synonyms" class="word-choice" ng-click="changeWord(synonym)">{{synonym}}</li>
