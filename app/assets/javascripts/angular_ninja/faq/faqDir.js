@@ -1,4 +1,4 @@
-app.directive('faq', function() {
+app.directive('faq', [function() {
   return {
     restrict: 'E',
     scope: {
@@ -79,4 +79,4 @@ app.directive('faq', function() {
 
     }]
   }
-});
+}]);

@@ -6,7 +6,7 @@ app.directive('rnjaToolBelt',['$http', function($http) {
       content: '=',
       showTools: '='
     },
-    controller: function($scope){
+    controller: ['$scope', function($scope){
       $scope.selectedTool = null;
       $scope.tempContent = '';
       $scope.hideSpinner = false;
@@ -116,6 +116,6 @@ app.directive('rnjaToolBelt',['$http', function($http) {
           $scope.rhymes = ["Please contact support."];
         });
       };
-    }
+    }]
   };
 }]);
