@@ -19,18 +19,22 @@
 
   <div class="word-matches" ng-show="isSelected('rhymes')">
     <div>
+      <wave-spinner ng-hide="hideSpinner"></wave-spinner>
       <ul>
         <li ng-repeat="rhyme in rhymes" class="word-choice" ng-click="changeWord(rhyme)">{{rhyme}}</li>
       </ul>
+      <div class="no-content-msg" ng-show="noRhymes && hideSpinner">No rhymes for "{{content.word}}".</div>
     </div>
   </div>
 
 
   <div class="word-matches" ng-show="isSelected('synonyms')">
     <div>
+      <wave-spinner ng-hide="hideSpinner"></wave-spinner>
       <ul>
         <li ng-repeat="synonym in synonyms" class="word-choice" ng-click="changeWord(synonym)">{{synonym}}</li>
       </ul>
+      <div class="no-content-msg" ng-show="noSynonyms && hideSpinner">No synonyms for "{{content.word}}".</div>
     </div>
   </div>
 
