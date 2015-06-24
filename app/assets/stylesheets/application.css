@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require_tree ./navigations
+ *= require angular-spinkit
  *= require_self
  */

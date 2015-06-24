@@ -1,5 +1,6 @@
 <div class="container" id="the-ninja">
   <div class="row">
+    <rnja-tool-belt content="selectedWord" ng-show="showTools" show-tools="showTools"></rnja-tool-belt>
     <div class="col-md-6 original-text-column">
       <h3 class="title">
         {{ rhyme.title }}
@@ -12,23 +13,40 @@
     <div class="col-md-6">
       <div class="rhymed-text">
 
-
-        <form>
-          <input type='text' ng-model="rhyme.title" class="title-box">
-          <textarea class="rhyme-box" ng-model="rhyme.rhymed_text"></textarea>
-          <button ng-click="rhymeFields.submitMethod()" class="btn ninja-button">
-            {{ rhymeFields.submitText }}
-          </button>
-        </form>
-
+        <div rnja-compile="toolTriggers"></div>
 
       </div>
+      <div class="rhyme-option-inputs">
+        <label>
+          Syllable Pattern
+          <input type='text' ng-model="rhyme.syllable_pattern" pattern="[\d+,\s]+|\d+">
+        </label>
+
+        <div class="switch switch-blue" ng-hide="anonUser">
+          <input type="radio" class="switch-input" name="visibility" value="public_rhyme" id="public_rhyme" checked ng-model="rhyme.visibility">
+          <label for="public_rhyme" class="switch-label switch-label-off">PUBLIC</label>
+          <input type="radio" class="switch-input" name="visibility" value="private_rhyme" id="private_rhyme" ng-model="rhyme.visibility">
+          <label for="private_rhyme" class="switch-label switch-label-on">PRIVATE</label>
+          <span class="switch-selection"></span>
+        </div>
+
+      </div>
+
+
+      <button class="btn btn-default save-rhyme bottom-buffer-50" ng-click="rhymeFields.submitMethod()">
+        {{rhymeFields.submitText}}
+      </button>
     </div>
   </div>
-  <div class="row" ng-show="anonUser">
+  <div class="row bottom-buffer-50" ng-show="anonUser">
     <button ng-click="redirectToCreateAccount()" class="btn btn-default create-account-button">
       Create Account To Permanently Save Work!
     </button>
     <faq page-name="theNinja"></faq>
+  </div>
+
+  <div class="footer navbar-fixed-bottom">
+    <div class="powered-by">Rhymes provided by: <a href="http://rhymebrain.com/">RhymeBrain</a></div>
+    <div class="powered-by">Thesaurus service provided by: <a href="words.bighugelabs.com">words.bighugelabs.com</a></div>
   </div>
 </div>

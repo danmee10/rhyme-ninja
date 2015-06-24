@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150529171011) do
+ActiveRecord::Schema.define(version: 20150619011647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,22 +32,45 @@ ActiveRecord::Schema.define(version: 20150529171011) do
     t.datetime "updated_at",      null: false
   end
 
+  create_table "rhymelations", force: :cascade do |t|
+    t.integer  "word_id"
+    t.integer  "word_rhyme_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
   create_table "rhymes", force: :cascade do |t|
     t.string   "title"
     t.text     "original_text"
     t.text     "rhymed_text"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.integer  "user_id"
-    t.integer  "visibility",    default: 0
+    t.integer  "visibility",       default: 0
+    t.string   "syllable_pattern", default: "5"
   end
 
   add_index "rhymes", ["user_id"], name: "index_rhymes_on_user_id", using: :btree
+
+  create_table "synonym_relations", force: :cascade do |t|
+    t.integer  "word_id"
+    t.integer  "word_synonym_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "words", force: :cascade do |t|
+    t.string   "spelling"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "searched_rhymes", default: false
+    t.boolean  "searched_syns",   default: false
   end
 
 end

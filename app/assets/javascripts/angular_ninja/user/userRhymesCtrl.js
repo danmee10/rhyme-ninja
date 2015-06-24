@@ -1,4 +1,4 @@
-app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', 'Rhyme', function ($scope, User, rhyme, angularFlash, Rhyme){
+app.controller('userRhymesCtrl', ['$scope', 'User', 'angularFlash', 'Rhyme', function ($scope, User, angularFlash, Rhyme){
   'use strict'
 
   if (anonUser) {
@@ -14,7 +14,6 @@ app.controller('userRhymesCtrl', ['$scope', 'User', 'rhyme', 'angularFlash', 'Rh
     var selection = _.find($scope.rhymes, function(r) {
       return r.id === id;
     });
-    $.extend(rhyme, selection)
   };
 
   $scope.deleteRhyme = function(rhymeId) {

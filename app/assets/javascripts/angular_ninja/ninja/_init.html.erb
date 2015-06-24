@@ -1,22 +1,43 @@
 <div id="ninja-init-form" class="container">
-  <div class="row">
-    <form ng-submit="initNinja()">
-      <input ng-model="rhyme.title"
-                 type='text'
-          placeholder="Title"
-                class="title-box">
-      <textarea ng-model="rhyme.originalText"
-             placeholder="Enter text..."
-                   class="init-rhyme-box">
-      </textarea>
-      <br>
-      <button type="submit"
-             class="btn init-ninja-button"
-        ng-disable="rhyme.originalText.length > 0">
-        Enter the Ninja!
-      </button>
+
+    <form name="initForm" ng-submit="initForm.$valid && initNinja()" class="row">
+      <div class="main-inputs col-md-4 col-md-offset-4 col-sm-12">
+        <input ng-model="rhyme.title"
+                   type='text'
+            placeholder="Title"
+                  class="title-box">
+        <textarea ng-model="rhyme.original_text"
+               placeholder="Enter text..."
+                     class="init-rhyme-box"
+                     required>
+        </textarea>
+      </div>
+
+      <div class="rhyme-option-inputs col-md-2 col-sm-12">
+        <label>
+          Syllable Pattern
+          <input type='text' ng-model="rhyme.syllable_pattern" pattern="[\d+,\s]+|\d+" required>
+        </label>
+
+        <div class="switch switch-blue" ng-hide="anonUser">
+          <input type="radio" class="switch-input" name="visibility" value="public_rhyme" id="public_rhyme" checked ng-model="rhyme.visibility">
+          <label for="public_rhyme" class="switch-label switch-label-off">PUBLIC</label>
+          <input type="radio" class="switch-input" name="visibility" value="private_rhyme" id="private_rhyme" ng-model="rhyme.visibility">
+          <label for="private_rhyme" class="switch-label switch-label-on">PRIVATE</label>
+          <span class="switch-selection"></span>
+        </div>
+
+      </div>
+
+      <div class="col-md-12">
+        <button type="submit"
+               class="btn init-ninja-button"
+          ng-disable="rhyme.original_text.length > 0">
+          Enter the Ninja!
+        </button>
+      </div>
     </form>
-  </div>
+
   <div class="row" ng-show="anonUser">
     <faq page-name="initNinja"></faq>
   </div>

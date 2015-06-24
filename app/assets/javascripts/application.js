@@ -20,6 +20,7 @@
 //= require angular-rails-templates
 //= require angular-ui-router
 //= require angular-cookies
+//= require angular-spinkit
 //= require ./angular_ninja/app
 //= require_tree ./angular_ninja/faq
 //= require_tree ./angular_ninja/ninja

@@ -1,0 +1,52 @@
+<div class="rnja-tool-belt">
+  <div class="rnja-header">
+    <span class="close-button glyphicon glyphicon-remove-circle" ng-click="hideTools()"></span>
+    <span class="back-button glyphicon glyphicon-chevron-left" ng-click="resetSelectedTool()" ng-show="!isSelected(null)"></span>
+    <h4 class="tools-title">{{content.word | rnjaTitleizeSpace }}</h4>
+  </div>
+
+  <div class="tool-selectors" ng-show="isSelected(null)">
+    <button ng-hide="nonWordSelected" class="btn btn-default" ng-click="selectTool('rhymes')">
+      Rhymes
+    </button>
+    <button ng-hide="nonWordSelected" class="btn btn-default" ng-click="selectTool('synonyms')">
+      Synonyms
+    </button>
+    <button class="btn btn-default" ng-click="selectTool('manual')">
+      Manual
+    </button>
+  </div>
+
+  <div class="word-matches" ng-show="isSelected('rhymes')">
+    <div>
+      <wave-spinner ng-hide="hideSpinner"></wave-spinner>
+      <ul>
+        <li ng-repeat="rhyme in rhymes" class="word-choice" ng-click="changeWord(rhyme)">{{rhyme}}</li>
+      </ul>
+      <div class="no-content-msg" ng-show="noRhymes && hideSpinner">No rhymes for "{{content.word}}".</div>
+    </div>
+  </div>
+
+
+  <div class="word-matches" ng-show="isSelected('synonyms')">
+    <div>
+      <wave-spinner ng-hide="hideSpinner"></wave-spinner>
+      <ul>
+        <li ng-repeat="synonym in synonyms" class="word-choice" ng-click="changeWord(synonym)">{{synonym}}</li>
+      </ul>
+      <div class="no-content-msg" ng-show="noSynonyms && hideSpinner">No synonyms for "{{content.word}}".</div>
+    </div>
+  </div>
+
+
+  <div class="manual-form" ng-show="isSelected('manual')">
+    <form>
+      <input type='text' ng-model="tempContent">
+      <button ng-click='changeWord()' class="btn btn-default">Change</button>
+      <button ng-click='cancelChange()' class="btn btn-default">Cancel</button>
+    </form>
+  </div>
+
+
+
+</div>

@@ -15,6 +15,8 @@ class RhymesController < ApplicationController
     @rhyme = Rhyme.create!({ user_id: params[:user_id],
                        original_text: params[:original_text],
                          rhymed_text: params[:original_text],
+                    syllable_pattern: params[:syllable_pattern],
+                          visibility: params[:visibility],
                                title: title})
     render json: @rhyme
   end
@@ -23,6 +25,8 @@ class RhymesController < ApplicationController
     @rhyme = Rhyme.where(id: params[:rhyme][:id], user_id: params[:user_id]).first
     if !@rhyme.blank?
       @rhyme.update!(rhymed_text: params[:rhymed_text],
+                      visibility: params[:visibility],
+                syllable_pattern: params[:syllable_pattern],
                            title: params[:title])
       render json: @rhyme
     else
