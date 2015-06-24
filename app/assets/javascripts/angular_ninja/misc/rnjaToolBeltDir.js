@@ -44,6 +44,7 @@ app.directive('rnjaToolBelt',['$http', function($http) {
 
       $scope.resetSelectedTool = function() {
         $scope.selectedTool = null;
+        $scope.hideSpinner = false;
       };
 
       var resetScopeVars = function() {
@@ -53,7 +54,7 @@ app.directive('rnjaToolBelt',['$http', function($http) {
         $scope.hideSpinner = false;
         $scope.noRhymes = true;
         $scope.noSynonyms = true;
-      }
+      };
 
       $scope.hideTools = function() {
         $scope.showTools = false;
