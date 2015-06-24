@@ -170,6 +170,10 @@ rnja-tool-belt {
       }
     }
     .word-matches {
+      .no-content-msg {
+        color: whitesmoke;
+        margin: 10px;
+      }
       ul {
         border: 1px solid grey;
         max-height: 300px;
