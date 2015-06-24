@@ -35,7 +35,7 @@ app.directive('faq', [function() {
         $scope.faqs = [
           {
             question: "Now what?",
-            answer: "Now it is up to you to transform the text on the right into a rhyme.  Start by clicking on any word to bring up the menu.  From there you will be able to replace the word you clicked on with a word that rhymes, a synonym, or any other word or words you can think of by changing it manually."
+            answer: "Now it is up to you to transform the text on the right into a rhyme.  Start by clicking on any word to bring up the tool belt.  From there you will be able to replace the word you clicked on with a word that rhymes, a synonym, or any other word or words you can think of by changing it manually."
           },
           {
             question: "What does 'Temporary Save' mean?",
