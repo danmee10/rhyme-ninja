@@ -93,9 +93,13 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
 
   $scope.$watch('rhyme.syllable_pattern',
     function(newWord){
-      if (!_.isUndefined($scope.rhyme)) {
+      if (!_.isUndefined($scope.rhyme) && $scope.rhyme.syllable_pattern !== '') {
         var sylls = _.map($scope.rhyme.syllable_pattern.split(", "), function(n){
-          return parseInt(n);
+          if (_.isNaN(+n)){
+            return 10;
+          } else {
+            return +n;
+          }
         });
         $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymed_text, sylls);
       }
