@@ -100,7 +100,7 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
 
   $scope.$watch('rhyme.rhymed_text',
     function(newWord){
-      if (!_.isUndefined($scope.rhyme)) {
+      if (!_.isUndefined($scope.rhyme) && validSyllPattern()) {
         var sylls = _.map($scope.rhyme.syllable_pattern.split(", "), function(n){
           return parseInt(n);
         });
