@@ -1,5 +1,5 @@
 <div id="js_flash" class="alert fade in">
-  <button class="close" data-dismiss="alert">×</button>
+  <button class="close">×</button>
 </div>
 <ui-view></ui-view>
 
@@ -7,6 +7,11 @@
 
 <% content_for :javascript do %>
   <script type="text/javascript">
+    $("#js_flash > button.close").click(function(){
+      $("#js_flash > span:last-child").remove();
+      $("#js_flash").removeClass('alert-danger alert-success');
+      $("#js_flash").hide();
+    });
     var token    = "<%= form_authenticity_token %>";
     var userId   = "<%= @user.try(:id) %>";
     if ("<%= @user.present? %>" === 'true'){
