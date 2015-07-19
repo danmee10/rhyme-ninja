@@ -50,49 +50,52 @@
 }
 
 #the-ninja {
-  .rhyme-option-inputs {
-    margin: 20px 0px;
-    text-align: center;
-  }
-  .original-text-column {
-    border-right: 1px solid lightgrey;
-    h3.title, .original-text {
+  .ninja-body {
+    margin-bottom: 150px;
+    .rhyme-option-inputs {
+      margin: 20px 0px;
       text-align: center;
     }
-  }
-  .rhymed-text {
-    .rhyme-tool-triggers {
-      text-align: center;
-      .rhyme-line {
-        border-bottom: 1px solid black;
-        line-height: 40px;
-        &:last-child {
-          border: none;
-        }
-        .rhyme-item {
-          transition: background-color .3s, font-size .3s;
-          &.selected-word {
-            font-size: 20px;
-            border-radius: 2px;
-            padding: 1px;
-            &.word {
-              background-color: black;
-              color: white;
-            }
-            &.non-word {
-              background-color: lightgrey;
-            }
+    .original-text-column {
+      border-right: 1px solid lightgrey;
+      h3.title, .original-text {
+        text-align: center;
+      }
+    }
+    .rhymed-text {
+      .rhyme-tool-triggers {
+        text-align: center;
+        .rhyme-line {
+          border-bottom: 1px solid black;
+          line-height: 40px;
+          &:last-child {
+            border: none;
           }
-          &:hover {
-            cursor: pointer;
-            border-radius: 2px;
-            padding: 1px;
-            &.word {
-              background-color: black;
-              color: white;
+          .rhyme-item {
+            transition: background-color .3s, font-size .3s;
+            &.selected-word {
+              font-size: 20px;
+              border-radius: 2px;
+              padding: 1px;
+              &.word {
+                background-color: black;
+                color: white;
+              }
+              &.non-word {
+                background-color: lightgrey;
+              }
             }
-            &.non-word {
-              background-color: lightgrey;
+            &:hover {
+              cursor: pointer;
+              border-radius: 2px;
+              padding: 1px;
+              &.word {
+                background-color: black;
+                color: white;
+              }
+              &.non-word {
+                background-color: lightgrey;
+              }
             }
           }
         }
