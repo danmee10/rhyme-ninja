@@ -2,21 +2,34 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
   'use strict';
 
   var saveToCookies = function saveToCookies() {
-    $cookies.put('anonRhymeTitle', $scope.rhyme.title);
-    $cookies.put('anonRhymedText', $scope.rhyme.rhymed_text);
-    $cookies.put('anonSyllables', $scope.rhyme.syllable_pattern);
+    if (validSyllPattern()) {
+      $cookies.put('anonRhymeTitle', $scope.rhyme.title);
+      $cookies.put('anonRhymedText', $scope.rhyme.rhymed_text);
+      $cookies.put('anonSyllables', $scope.rhyme.syllable_pattern);
+      angularFlash.alertSuccess("Rhyme saved to cookies!");
+    } else {
+      angularFlash.alertDanger("Invalid Syllable Pattern");
+    }
   };
 
   var alterText = function alterText() {
-    var alteredRhyme = $scope.rhyme;
-    Rhyme.update({ user_id: alteredRhyme.user_id,
-                        id: alteredRhyme.id,
-                     title: alteredRhyme.title,
-               rhymed_text: alteredRhyme.rhymed_text,
-          syllable_pattern: alteredRhyme.syllable_pattern,
-                visibility: alteredRhyme.visibility,
-        authenticity_token: token
-    });
+    if (validSyllPattern()) {
+      var alteredRhyme = $scope.rhyme;
+      Rhyme.update({ user_id: alteredRhyme.user_id,
+                          id: alteredRhyme.id,
+                       title: alteredRhyme.title,
+                 rhymed_text: alteredRhyme.rhymed_text,
+            syllable_pattern: alteredRhyme.syllable_pattern,
+                  visibility: alteredRhyme.visibility,
+          authenticity_token: token
+      }, function(resp){
+        angularFlash.alertSuccess("Rhyme saved!");
+      }, function(err){
+        angularFlash.alertDanger("Error saving, please contact support.");
+      });
+    } else {
+      angularFlash.alertDanger("Invalid Syllable Pattern");
+    }
   };
 
   $scope.anonUser = anonUser;
@@ -30,6 +43,11 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
       submitText: "Save",
       submitMethod: alterText
     }
+  }
+
+  var validSyllPattern = function() {
+    var match = $scope.rhyme.syllable_pattern.match(/[\d+,\s]+|\d+/);
+    return match != null && $scope.rhyme.syllable_pattern == match[0];
   }
 
   var rhymeById = function(id) {
@@ -93,13 +111,13 @@ app.controller('theNinjaCtrl', ['$scope', 'Rhyme', '$location', '$stateParams', 
 
   $scope.$watch('rhyme.syllable_pattern',
     function(newWord){
-      var match = $scope.rhyme.syllable_pattern.match(/[\d+,\s]+|\d+/);
-      var correctFormat = match != null && $scope.rhyme.syllable_pattern == match[0];
-      if (!_.isUndefined($scope.rhyme) && correctFormat) {
-        var sylls = _.map($scope.rhyme.syllable_pattern.split(", "), function(n){
-          return +n;
-        });
-        $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymed_text, sylls);
+      if (!_.isUndefined($scope.rhyme) && !_.isUndefined($scope.rhyme.syllable_pattern)) {
+        if (validSyllPattern()) {
+          var sylls = _.map($scope.rhyme.syllable_pattern.split(", "), function(n){
+            return +n;
+          });
+          $scope.toolTriggers = textWrapper.wrapText($scope.rhyme.rhymed_text, sylls);
+        }
       }
     }
   );
