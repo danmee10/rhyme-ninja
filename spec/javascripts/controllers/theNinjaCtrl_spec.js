@@ -135,6 +135,16 @@ describe('Controller: ninja/theNinjaCtrl', function(){
       expect($scope.rhyme.syllable_pattern).toEqual('1, 2, 3');
       expect($scope.toolTriggers).toEqual("<div class='rhyme-tool-triggers'><div class='rhyme-line'><span ng-click='wordClick({\"word\":\"this\",\"position\":[0,3]})' ng-class=\"{'selected-word': isSelectedWord([0,3])}\" class='rhyme-item word'>this</span></div></div>");
     });
+    it('does nothing if syllable_pattern format is invalid', function() {
+      setPageVars(null, null, true);
+      $controller('theNinjaCtrl', { toolBelt: mockToolBelt, $scope: $scope });
+
+      expect($scope.toolTriggers).toEqual();
+      $scope.rhyme.rhymed_text = "this";
+      $scope.rhyme.syllable_pattern = "1dghm";
+      $scope.$apply();
+      expect($scope.toolTriggers).not.toBeDefined();
+    });
   });
 
   describe('$scope.showTools', function() {
